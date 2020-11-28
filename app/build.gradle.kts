@@ -8,8 +8,12 @@ import config.Libs.navigation
 import config.Libs.retrofit
 import config.Libs.room
 import config.TestLibs.androidxTest
+import config.TestLibs.coroutinesTest
 import config.TestLibs.espresso
+import config.TestLibs.koinTest
+import config.TestLibs.mockWebServer
 import config.TestLibs.mockk
+import config.TestLibs.navigationTest
 
 plugins {
     id("com.android.application")
@@ -150,4 +154,8 @@ dependencies {
     espresso()
     mockk()
     androidxTest()
+    navigationTest()
+    koinTest()
+    coroutinesTest()
+    mockWebServer()
 }

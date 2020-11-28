@@ -28,9 +28,8 @@ object TestLibs {
     const val TRUTH = "com.google.truth:truth:1.1"
     const val JSON = "org.json:json:20180130"
 
-    fun DependencyHandler.navigationTest() {
+    fun DependencyHandler.navigationTest() =
         androidTestImplementation(ANDROIDX_NAVIGATION_TESTING)
-    }
 
     fun DependencyHandler.koinTest() = androidTestImplementation(KOIN_TEST)
 
@@ -51,9 +50,8 @@ object TestLibs {
         androidTestImplementation(MOCKK_ANDROID)
     }
 
-    fun DependencyHandler.mockWebServer() {
+    fun DependencyHandler.mockWebServer() =
         androidTestImplementation(MOCK_WEB_SERVER)
-    }
 
     fun DependencyHandler.androidxTest() {
         testImplementation(ANDROIDX_TEST_EXT_JUNIT)
