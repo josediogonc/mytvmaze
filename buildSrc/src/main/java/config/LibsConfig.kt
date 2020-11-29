@@ -46,7 +46,6 @@ object Libs {
     const val PICASSO = "com.squareup.picasso:picasso:${Versioning.PICASSO_VERSION}"
     const val ANDROID_IMAGE_CROPPER = "com.theartofdev.edmodo:android-image-cropper:2.8.0"
     const val LOTTIE = "com.airbnb.android:lottie:3.1.0"
-    const val FOTOAPPARAT = "io.fotoapparat:fotoapparat:2.7.0"
     const val ANDROID_SPIN_KIT = "com.github.ybq:Android-SpinKit:1.4.0"
     const val INSTALL_REFERRES = "com.android.installreferrer:installreferrer:1.1"
     const val BCPROV = "org.bouncycastle:bcprov-jdk16:1.46"

@@ -21,6 +21,7 @@ plugins {
     kotlin("android.extensions")
     kotlin("kapt")
     id("jacoco")
+    id("kotlin-android")
 }
 
 jacoco {
@@ -69,11 +70,7 @@ android {
             dimension = "default"
             applicationIdSuffix = ".dev"
             versionNameSuffix = ".dev"
-        }
-        create("stage") {
-            dimension = "default"
-            applicationIdSuffix = ".stage"
-            versionNameSuffix = ".stage"
+            buildConfigField("String", "BASE_URL", Environment.BASE_URL)
         }
         create("prod") {
             dimension = "default"
@@ -123,13 +120,14 @@ dependencies {
     implementation(config.Libs.LOTTIE)
     implementation(config.Libs.SHIMMER)
     implementation(config.Libs.SHAPE_OF_VIEW)
-    implementation(config.Libs.FOTOAPPARAT)
     implementation(config.Libs.ANDROID_SPIN_KIT)
     implementation(config.Libs.INSTALL_REFERRES)
     implementation(config.Libs.BCPROV)
     implementation(config.Libs.VIEW_PAGER_DOT_INDICATOR)
     implementation(config.Libs.CHART_VIEW)
     implementation(config.Libs.SWIPE_REFRESH)
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     releaseImplementation(config.Libs.CHUCK_RELEASE_NO_OP)
 
     debugImplementation(config.Libs.DEBUG_DB)

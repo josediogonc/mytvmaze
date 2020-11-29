@@ -1,5 +1,6 @@
 buildscript {
 
+    val kotlin_version by extra("1.4.20")
     repositories {
         google()
         jcenter()
@@ -11,6 +12,7 @@ buildscript {
         classpath(config.BuildPlugins.KOTLIN_PLUGIN)
         classpath(config.BuildPlugins.NAVIGATION_SAFE_ARGS_PLUGIN)
         classpath(config.BuildPlugins.JACOCO_PLUGIN)
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
     }
 }
 

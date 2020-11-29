@@ -1,3 +1,3 @@
 object Environment {
-    const val BASE_URL = "\"http://api.tvmaze.com/\""
+    const val BASE_URL = "\"https://api.tvmaze.com/\""
 }
