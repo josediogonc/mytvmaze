@@ -20,6 +20,7 @@ plugins {
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
+    id("androidx.navigation.safeargs.kotlin")
     id("jacoco")
     id("kotlin-android")
 }
@@ -117,6 +118,7 @@ dependencies {
     implementation(config.Libs.BIOMETRIC)
 
     implementation(config.Libs.ANDROID_IMAGE_CROPPER)
+    implementation(config.Libs.PICASSO)
     implementation(config.Libs.LOTTIE)
     implementation(config.Libs.SHIMMER)
     implementation(config.Libs.SHAPE_OF_VIEW)
