@@ -185,6 +185,7 @@
                 <LinearLayout
                     android:layout_marginStart="@dimen/default_spacing"
                     android:layout_marginEnd="@dimen/default_spacing"
+                    android:layout_marginBottom="@dimen/double_spacing"
                     android:orientation="vertical"
                     android:id="@+id/seasons_episodes_layout"
                     android:layout_width="match_parent"

@@ -1,22 +1,22 @@
 package com.example.mytvmaze.tvmaze.shows.ui
 
-import android.R.attr.bottom
-import android.R.attr.top
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
+import android.widget.LinearLayout.*
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mytvmaze.R
 import com.example.mytvmaze.core.ui.fragment.BaseFragment
 import com.example.mytvmaze.databinding.FragmentShowsDetailsBinding
+import com.example.mytvmaze.tvmaze.shows.model.Episode
 import com.example.mytvmaze.tvmaze.shows.viewModel.ShowDetailsViewModel
 import com.squareup.picasso.Picasso
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.*
 
 
 class ShowDetailsFragment : BaseFragment() {
@@ -30,19 +30,20 @@ class ShowDetailsFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentShowsDetailsBinding.inflate(inflater, container, false)
-        binding.showData = args.show
-        binding.viewModel = viewModel
-        binding.lifecycleOwner = viewLifecycleOwner
-
-        viewModel.getEpisodes(args.show.id)
-
-        val tv_dynamic = TextView(requireContext())
-        tv_dynamic.textSize = 16f
-        tv_dynamic.text = "This is a dynamic TextView generated programma tically in Kotlin"
-
-        binding.seasonsEpisodesLayout.addView(tv_dynamic)
-
+        binding.apply {
+            showData = args.show
+            viewModel = viewModel
+            lifecycleOwner = viewLifecycleOwner
+        }
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewModel.getEpisodes(args.show.id)
+        setupToolbar()
+        setupPoster()
+
     }
 
     private fun setupPoster() {
@@ -54,14 +55,63 @@ class ShowDetailsFragment : BaseFragment() {
         binding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupToolbar()
-        setupPoster()
-
-
+    override fun setupObservers() {
+        super.setupObservers()
+        episodesListObserver()
     }
 
+    private fun episodesListObserver() {
+        viewModel.episodes.observe(viewLifecycleOwner, { list ->
+            list?.let {
+                val episodesMap = viewModel.getEpisodesMappedBySeason()
+                initSeasonsAndEpisodesView(episodesMap)
+            }
+        })
+    }
+
+    private fun initSeasonsAndEpisodesView(episodesMap: MutableMap<Int, List<Episode>>) {
+        for((season, episodes) in episodesMap) {
+            addSeasonTextView("Season $season")
+            initEpisodesView(episodes)
+        }
+    }
+
+    private fun initEpisodesView(episodes: List<Episode>) {
+        for(episode in episodes) {
+            addEpisodeTextView(episode)
+        }
+    }
+    
+    private fun navigateToEpisodeDetailsScreen(episode : Episode) {
+        val action = ShowDetailsFragmentDirections.actionShowDetailsFragmentToEpisodeDetails(episode)
+        findNavController().navigate(action)
+    }
+
+    private fun addEpisodeTextView(episode: Episode) {
+        val layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
+        layoutParams.setMargins(10,15,10,15)
+        val tvEpisode = TextView(requireContext())
+        tvEpisode.apply {
+            textSize = 17f
+            text = episode.toString()
+            setTextColor(resources.getColor(R.color.black))
+            setOnClickListener { navigateToEpisodeDetailsScreen(episode) }
+        }
+        binding.seasonsEpisodesLayout.addView(tvEpisode, layoutParams)
+    }
+
+    private fun addSeasonTextView(value: String) {
+        val layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT)
+        layoutParams.setMargins(10,50,10,30)
+        //layoutParams.gravity = Gravity.CENTER_HORIZONTAL
+        val tvSeason = TextView(requireContext())
+        tvSeason.apply {
+            textSize = 18f
+            text = value.toUpperCase(Locale.getDefault())
+            setTextColor(resources.getColor(R.color.color_primary_dark))
+        }
+        binding.seasonsEpisodesLayout.addView(tvSeason, layoutParams)
+    }
 
 
 }

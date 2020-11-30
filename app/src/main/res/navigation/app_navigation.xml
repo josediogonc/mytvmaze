@@ -48,6 +48,11 @@
         android:label="EpisodeDetailsFragment"
         tools:layout="@layout/fragment_episode_details">
 
+        <argument
+            android:name="episode"
+            app:nullable="false"
+            app:argType="com.example.mytvmaze.tvmaze.shows.model.Episode" />
+
     </fragment>
 
 </navigation>
