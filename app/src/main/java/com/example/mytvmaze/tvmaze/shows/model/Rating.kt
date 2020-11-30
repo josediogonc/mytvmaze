@@ -14,6 +14,6 @@ data class Rating(
 
     override fun toString() = average?.let {
         it.toString()
-    } ?: ""
+    } ?: "(no rating available)"
 
 }

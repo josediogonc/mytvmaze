@@ -13,11 +13,11 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         binding.lifecycleOwner = this
         setContentView(binding.root)
-
+/*
         val navController = Navigation.findNavController(this, R.id.fragment_navhost)
         val navInflater = navController.navInflater
         val graph = navInflater.inflate(R.navigation.app_navigation)
-        navController.graph = graph
+        navController.graph = graph*/
 
 
     }

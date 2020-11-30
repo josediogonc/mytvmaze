@@ -9,10 +9,10 @@ import kotlinx.android.parcel.Parcelize
 data class Network (
 
     @field:Json(name = "name")
-    val name : String
+    val name : String? = null
 
 ) : Parcelable {
 
-    override fun toString() = this.name
+    override fun toString() = this.name?.let { it } ?: "Unknown"
 
 }

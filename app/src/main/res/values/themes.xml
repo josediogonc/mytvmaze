@@ -5,7 +5,7 @@
         <item name="colorPrimaryDark">@color/tiber</item>
         <item name="colorSecondary">@color/dim_gray</item>
         <item name="android:statusBarColor" tools:targetApi="l">@color/tiber</item>
-        <item name="android:windowBackground">@color/tiber</item>
+        <item name="android:windowBackground">@color/very_light_gray</item>
         <item name="android:windowAnimationStyle">@style/WindowAnimationTransition</item>
 
     </style>
@@ -27,6 +27,11 @@
         <item name="android:maxLength">100</item>
         <item name="android:textColor">@color/tiber</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="show_list_title_huge" parent="show_list_title">
+        <item name="android:textSize">25sp</item>
     </style>
 
     <style name="label_style" parent="TextAppearance.AppCompat.Small">
@@ -38,6 +43,40 @@
         <item name="android:layout_marginEnd">5dp</item>
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textStyle">italic</item>
+        <item name="android:gravity">center_horizontal</item>
     </style>
 
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/very_light_gray</item>
+        <item name="colorControlActivated">@color/ochre_yellow</item>
+    </style>
+
+    <style name="properties_style" parent="TextAppearance.AppCompat.Small">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_height">20dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:maxLength">100</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:paddingTop">1dp</item>
+        <item name="android:layout_marginEnd">5dp</item>
+    </style>
+
+    <style name="label_style_detail" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">5dp</item>
+        <item name="android:textColor">@color/color_primary_dark</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="label_style_detail_smaller" parent="label_style_detail">
+        <item name="android:textSize">14sp</item>
+        <item name="android:minWidth">100dp</item>
+        <item name="android:gravity">right</item>
+    </style>
 </resources>

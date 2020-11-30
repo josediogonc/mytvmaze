@@ -28,9 +28,9 @@
         tools:layout="@layout/fragment_shows_details">
 
         <argument
-            android:name="show_id"
+            android:name="show"
             app:nullable="false"
-            app:argType="integer" />
+            app:argType="com.example.mytvmaze.tvmaze.shows.model.Show" />
 
         <action
             android:id="@+id/action_showDetailsFragment_to_episodeDetails"

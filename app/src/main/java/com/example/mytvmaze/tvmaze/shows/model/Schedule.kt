@@ -1,7 +1,6 @@
 package com.example.mytvmaze.tvmaze.shows.model
 
 import android.os.Parcelable
-import android.util.Log
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
@@ -16,13 +15,6 @@ data class Schedule (
 
     ) : Parcelable {
 
-    init {
-        toString()
-    }
+        override fun toString() = "$time ${days.joinToString(separator = ", ") { it }}"
 
-        override fun toString() : String {
-            val a = "{$time $days}"
-            Log.d("Schedule", a)
-            return a
-        }
     }

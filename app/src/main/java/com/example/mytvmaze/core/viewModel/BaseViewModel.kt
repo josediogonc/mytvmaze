@@ -9,7 +9,13 @@ import com.example.mytvmaze.core.network.retrofit.model.RequestError
 //TODO: inserir camda de repositorio
 open class BaseViewModel(protected val apiRepository: ApiRepository) : ViewModel() {
 
+    val loading = MutableLiveData(true)
+
     protected val _errorDialog = MutableLiveData<RequestError>()
     val errorDialog: LiveData<RequestError> = _errorDialog
+
+    fun loading(value: Boolean) {
+        loading.value = value
+    }
 
 }

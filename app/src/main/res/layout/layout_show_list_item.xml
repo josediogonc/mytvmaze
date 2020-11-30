@@ -5,7 +5,6 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="270dp"
-        android:paddingTop="@dimen/default_margin"
         android:paddingLeft="@dimen/default_margin"
         android:paddingRight="@dimen/default_margin"
         android:orientation="vertical"
@@ -41,27 +40,13 @@
                         android:src="@drawable/placeholder_movie_poster"
                         />
 
-                    <LinearLayout
-                        android:layout_width="70dp"
-                        android:layout_height="20dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_margin="5dp"
-                        android:background="@color/tiber">
-
-
-                        <TextView
-                            android:id="@+id/date_released"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:text="10/10/2019"
-                            android:textColor="@android:color/white"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-
-
-                    </LinearLayout>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_marginBottom="20dp"
+                        android:background="@color/color_primary_dark"
+                        android:alpha="0.7"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -71,6 +56,7 @@
                         android:gravity="center">
 
                         <RatingBar
+                            android:theme="@style/RatingBar"
                             android:id="@+id/ratingBar"
                             style="?android:attr/ratingBarStyleSmall"
                             android:layout_width="wrap_content"
@@ -78,7 +64,7 @@
                             android:layout_marginRight="15dp"
                             android:max="5"
                             android:numStars="5"
-                            android:rating="3.4"
+                            android:rating="0"
                             android:scaleX="1.2"
                             android:scaleY="1.2"
                             android:stepSize="0.1" />
@@ -87,7 +73,7 @@
                             android:id="@+id/rating"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="7,5"
+                            android:text=""
                             android:textColor="@android:color/white"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -118,24 +104,62 @@
                             <TextView
                                 style="@style/show_list_title"
                                 android:id="@+id/tv_title"
-                                android:gravity="center_horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="TV Show Title" />
 
                             <TextView
                                 style="@style/label_style"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginBottom="5dp"
                                 android:id="@+id/tv_genres"
-                                android:gravity="center_horizontal"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="Genre list" />
+
+                            <TextView
+                                android:layout_marginTop="2dp"
+                                android:layout_marginBottom="2dp"
+                                android:id="@+id/tv_premiered"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/show_premiered" />
+
+                            <TextView
+                                android:layout_marginTop="2dp"
+                                android:layout_marginBottom="2dp"
+                                android:id="@+id/tv_status"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/show_status" />
+
+                            <TextView
+                                android:layout_marginTop="2dp"
+                                android:layout_marginBottom="2dp"
+                                android:id="@+id/tv_type"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/show_type" />
+
+                            <TextView
+                                android:layout_marginTop="2dp"
+                                android:layout_marginBottom="2dp"
+                                android:id="@+id/tv_network"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/show_network" />
+
+                            <TextView
+                                android:layout_marginTop="2dp"
+                                android:layout_marginBottom="2dp"
+                                android:id="@+id/tv_schedule"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/show_schedule" />
+
                         </LinearLayout>
                     </LinearLayout>
-
-
                 </LinearLayout>
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>

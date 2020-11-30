@@ -5,4 +5,17 @@
     <string name="error_title_default">error_title_default</string>
     <string name="error_message_default">error_message_default</string>
     <string name="lorem_ipsum">"Lorem ipsum dolor sit amet, consectetur adipiscing elit.Tellus fermentum elit, ac tempor lacus erat ultrices odio. Ut vitae pharetra justo, a tempor erat. Maecenas vitae mollis eros. Donec vel ultricies arcu, ac faucibus felis. Ut sit amet odio finibus, auctor lorem a, pharetra massa. "</string>
+    <string name="show_network"><b>Network:</b> %s</string>
+    <string name="show_status"><b>Status:</b> %s</string>
+    <string name="show_schedule"><b>Schedule:</b> %s</string>
+    <string name="show_type"><b>Type:</b> %s</string>
+    <string name="show_premiered"><b>Premiered:</b> %s</string>
+    <string name="title">Title</string>
+    <string name="genres">Genres</string>
+    <string name="rating">Rating</string>
+    <string name="schedule">Schedule</string>
+    <string name="date_released">Premiered at</string>
+    <string name="summary">Summary</string>
+    <string name="seasons_and_episodes">Seasons and Episodes</string>
+    <string name="network">Network</string>
 </resources>

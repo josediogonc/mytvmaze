@@ -17,4 +17,5 @@ data class PosterImage(
 ) : Parcelable, Serializable {
 
     override fun toString() = "{$medium, $original}"
+
 }

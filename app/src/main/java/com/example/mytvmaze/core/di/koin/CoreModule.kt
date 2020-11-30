@@ -8,6 +8,7 @@ import com.example.mytvmaze.api.service.ApiService
 import com.example.mytvmaze.core.network.retrofit.OkHttpClientFactory
 import com.example.mytvmaze.core.network.retrofit.RetrofitFactory
 import com.example.mytvmaze.database.DatabaseFactory
+import com.example.mytvmaze.tvmaze.shows.viewModel.ShowDetailsViewModel
 import com.example.mytvmaze.tvmaze.shows.viewModel.ShowsViewModel
 import okhttp3.Interceptor
 import okhttp3.logging.HttpLoggingInterceptor
@@ -35,4 +36,5 @@ val CoreModule = module {
 
     // ViewModels
     viewModel { ShowsViewModel(get()) }
+    viewModel { ShowDetailsViewModel(get()) }
 }

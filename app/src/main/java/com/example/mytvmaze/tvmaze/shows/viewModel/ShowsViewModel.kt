@@ -11,8 +11,11 @@ import kotlinx.coroutines.launch
 
 class ShowsViewModel(apiRepository: ApiRepository) : BaseViewModel(apiRepository) {
 
-    val loading = MutableLiveData(true)
     val showList = MutableLiveData<List<Show>>()
+
+    init {
+        getShowsByPage(1)
+    }
 
     fun getShowsByPage(page : Int) {
         viewModelScope.launch {
@@ -23,8 +26,15 @@ class ShowsViewModel(apiRepository: ApiRepository) : BaseViewModel(apiRepository
         }
     }
 
-    fun loading(value: Boolean) {
-        loading.value = value
+    //TODO
+    fun searchShow(query : String) {
+        viewModelScope.launch {
+            loading(true)
+            //val resource = apiRepository.getShowsByPage(page) TODO
+            //resource.validateResponse(showList, _errorDialog)
+            loading(false)
+        }
     }
+
 
 }

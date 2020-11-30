@@ -8,7 +8,7 @@ import com.example.mytvmaze.tvmaze.shows.model.PosterImage
 import com.example.mytvmaze.tvmaze.shows.model.Rating
 import com.example.mytvmaze.tvmaze.shows.model.Show
 
-@Database(entities = [Show::class], exportSchema = false, version = 2)
+@Database(entities = [Show::class], exportSchema = false, version = 5)
 @TypeConverters(
     PosterImageConverter::class,
     GenresConverter::class,

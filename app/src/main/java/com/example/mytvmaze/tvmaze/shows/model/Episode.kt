@@ -1,6 +1,7 @@
 package com.example.mytvmaze.tvmaze.shows.model
 
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
 
@@ -22,7 +23,11 @@ data class Episode(
     @field:Json(name = "summary")
     val summary : String,
 
+    @SerializedName("image")
     @field:Json(name = "image")
     val poster : PosterImage,
 
-) : Parcelable
+) : Parcelable {
+
+    override fun toString() = "$number. $name"
+}

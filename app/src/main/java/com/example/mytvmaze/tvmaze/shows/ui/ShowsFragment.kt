@@ -27,11 +27,6 @@ class ShowsFragment : BaseFragment() {
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewModel.getShowsByPage(1)
-    }
-
     override fun setupObservers() {
         errorDialogObserver()
         showListLoadedObserver()
@@ -48,7 +43,7 @@ class ShowsFragment : BaseFragment() {
     private fun setupShowListRecyclerView(list: List<Show>) {
         binding.rvShowsList.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = ShowListAdapter(list.take(10))
+            adapter = ShowListAdapter(list)
         }
     }
 
