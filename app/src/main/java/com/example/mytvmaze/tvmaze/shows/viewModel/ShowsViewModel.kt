@@ -9,7 +9,6 @@ import com.example.mytvmaze.tvmaze.shows.model.Show
 import com.example.mytvmaze.tvmaze.shows.model.ShowsResponse
 import kotlinx.coroutines.launch
 
-
 class ShowsViewModel(apiRepository: ApiRepository) : BaseViewModel(apiRepository) {
 
     val showList = MutableLiveData<List<Show>>()
@@ -17,8 +16,22 @@ class ShowsViewModel(apiRepository: ApiRepository) : BaseViewModel(apiRepository
     val input = MutableLiveData("")
     val toolbarTitle = MutableLiveData("My TV Maze")
 
+    val inputObserver = androidx.lifecycle.Observer<String> { inputValue ->
+        inputValue?.let {
+            if (it.isNotEmpty()) {
+                toolbarTitle.value = "Searching for '$it'"
+                searchShow(it)
+            }
+        }
+    }
+
     init {
         getShowsByPage(1)
+        initObservable()
+    }
+
+    private fun initObservable() {
+        input.observeForever(inputObserver)
     }
 
     fun getShowsByPage(page : Int) {
@@ -47,5 +60,11 @@ class ShowsViewModel(apiRepository: ApiRepository) : BaseViewModel(apiRepository
             showsSearchResponse.forEach { list.add(it.show) }
         }.also { return list }
     }
+
+    override fun onCleared() {
+        input.removeObserver(inputObserver)
+        super.onCleared()
+    }
+
 
 }

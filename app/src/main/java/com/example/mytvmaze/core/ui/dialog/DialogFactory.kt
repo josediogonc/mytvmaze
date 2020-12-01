@@ -100,7 +100,7 @@ object DialogFactory {
             bt.text = actionButtonMsg
         }
 
-        fun getInputValue() = et_input.text.toString()
+        fun getInputValue() = et_input.text.trim().toString()
     }
 
     open class CustomDialogWithOneButton(

@@ -19,4 +19,7 @@
     <string name="seasons_and_episodes">Seasons and Episodes</string>
     <string name="network">Network</string>
     <string name="episode_summary">Episode summary</string>
+    <string name="search_dialog_title">Search a TV Show</string>
+    <string name="search_dialog_message">Please, write over some keywords for your search</string>
+    <string name="search_dialog_button">Search</string>
 </resources>

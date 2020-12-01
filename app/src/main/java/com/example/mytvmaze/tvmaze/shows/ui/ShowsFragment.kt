@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.mytvmaze.R
 import com.example.mytvmaze.core.extensions.*
 import com.example.mytvmaze.databinding.FragmentShowsBinding
 import com.example.mytvmaze.core.ui.dialog.DialogFactory
@@ -26,26 +27,33 @@ class ShowsFragment : BaseFragment() {
         binding = FragmentShowsBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
-
-        binding.ivSearchIcon.setOnClickListener {
-            val dialog = DialogFactory.InputDialog(
-                requireContext(),
-                "Search a TV Show",
-                "Please, write over some keywords for your search",
-                "Search",
-                viewModel.input
-            )
-            dialog.show()
-        }
-
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupSearch()
+    }
+
+    override fun setupToolbar() = Unit
 
     override fun setupObservers() {
         errorDialogObserver()
         showListLoadedObserver()
-        inputValueObserver()
         searchListLoadedObserver()
+    }
+
+    private fun setupSearch() {
+        binding.ivSearchIcon.setOnClickListener {
+            val dialog = DialogFactory.InputDialog(
+                requireContext(),
+                getString(R.string.search_dialog_title),
+                getString(R.string.search_dialog_message),
+                getString(R.string.search_dialog_button),
+                viewModel.input
+            )
+            dialog.show()
+        }
     }
 
     private fun searchListLoadedObserver() {
@@ -63,19 +71,6 @@ class ShowsFragment : BaseFragment() {
         setupShowListRecyclerView(shows)
 
     }
-
-    private fun inputValueObserver() {
-        viewModel.input.observe(viewLifecycleOwner, { inputValue ->
-            inputValue?.let {
-                if (it.isNotEmpty()) {
-                    viewModel.toolbarTitle.value = "Searching for '$it'"
-                    viewModel.searchShow(it)
-                }
-            }
-        })
-    }
-
-    override fun setupToolbar() = Unit
 
     private fun showListLoadedObserver() {
         viewModel.showList.observe(viewLifecycleOwner, { list ->

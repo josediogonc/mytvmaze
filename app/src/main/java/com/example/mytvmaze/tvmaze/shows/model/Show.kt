@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import androidx.room.TypeConverters
+import com.example.mytvmaze.core.extensions.removeOutsideParagraph
 import com.example.mytvmaze.core.extensions.toHTML
 import com.example.mytvmaze.database.*
 import com.google.gson.annotations.SerializedName
@@ -63,7 +64,5 @@ data class Show(
         "(Unknown genre)"
     }
 
-    val formattedSummary get() = summary?.let{
-        it.removePrefix("<p>").removeSuffix("</p>").toHTML()
-    } ?: "(Summary not found)"
+    val formattedSummary get() = summary?.removeOutsideParagraph() ?: "(Summary not found)"
 }

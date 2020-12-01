@@ -1,6 +1,7 @@
 package com.example.mytvmaze.tvmaze.shows.model
 
 import android.os.Parcelable
+import com.example.mytvmaze.core.extensions.removeOutsideParagraph
 import com.example.mytvmaze.core.extensions.toHTML
 import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
@@ -34,9 +35,7 @@ data class Episode(
 
     val formattedSeasonAndEpisode get() = "Season $season, Episode $number"
 
-    val formattedSummary get() = summary?.apply {
-        removePrefix("<p>").removeSuffix("</p>").toHTML()
-    } ?: "(Summary not found)"
+    val formattedSummary get() = summary?.removeOutsideParagraph() ?: "(Summary not found)"
 
     val nameWithSeason get() : String {
         val season = if(season < 10) "S0$season" else "S$season"
