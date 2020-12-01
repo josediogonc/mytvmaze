@@ -15,9 +15,9 @@
     </data>
 
     <RelativeLayout
-        android:background="@color/white"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar"
@@ -64,21 +64,21 @@
 
                 <TextView
                     style="@style/TitleStyle.H1"
-                    android:layout_marginStart="@dimen/default_spacing"
-                    android:layout_marginEnd="@dimen/default_spacing"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_spacing"
                     android:layout_marginTop="@dimen/default_spacing"
+                    android:layout_marginEnd="@dimen/default_spacing"
                     android:text="@{showData.name}"
                     tools:text="Mad Max: Fury Road" />
 
                 <TextView
                     android:id="@+id/tv_show_genres"
-                    android:layout_marginStart="@dimen/default_spacing"
-                    android:layout_marginEnd="@dimen/default_spacing"
                     style="@style/GenreStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/default_spacing"
+                    android:layout_marginEnd="@dimen/default_spacing"
                     android:text="@{showData.genresAsString}"
                     tools:text="Comedy / Action" />
 
@@ -138,25 +138,27 @@
                         style="@style/PropertyStyle"
                         android:layout_width="wrap_content"
                         android:layout_below="@id/label_date_released"
-                        android:layout_toEndOf="@id/label_rating"
+                        android:layout_marginStart="10dp"
+                        android:layout_toRightOf="@id/ratingBar"
                         android:text="@{showData.rating.toString()}"
+                        android:textStyle="bold"
                         tools:text="3.5" />
 
                     <RatingBar
-                        android:layout_below="@id/label_date_released"
-                        android:layout_toRightOf="@id/rating_value"
-                        android:theme="@style/RatingBarTheme"
                         android:id="@+id/ratingBar"
                         style="?android:attr/ratingBarStyleSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="15dp"
+                        android:layout_below="@id/label_date_released"
+                        android:layout_marginStart="5dp"
+                        android:layout_toEndOf="@id/label_rating"
                         android:max="5"
                         android:numStars="5"
                         android:rating="0"
                         android:scaleX="1.2"
                         android:scaleY="1.2"
-                        android:stepSize="0.1" />
+                        android:stepSize="0.1"
+                        android:theme="@style/RatingBarTheme" />
 
                     <TextView
                         style="@style/PropertyStyle"
@@ -175,15 +177,15 @@
                     style="@style/TitleStyle.H2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/default_spacing"
                     android:layout_marginStart="@dimen/double_spacing"
                     android:layout_marginTop="@dimen/double_spacing"
                     android:layout_marginEnd="@dimen/double_spacing"
+                    android:layout_marginBottom="@dimen/default_spacing"
                     android:text="@string/show_summary" />
 
                 <TextView
-                    style="@style/LongTextStyle"
                     android:id="@+id/movie_summary"
+                    style="@style/LongTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/double_spacing"
@@ -202,16 +204,16 @@
                     android:text="@string/seasons_and_episodes" />
 
                 <LinearLayout
-                    android:layout_marginTop="@dimen/default_spacing"
-                    android:layout_marginStart="@dimen/double_spacing"
-                    android:layout_marginEnd="@dimen/double_spacing"
-                    android:layout_marginBottom="@dimen/double_spacing"
-                    android:orientation="vertical"
                     android:id="@+id/seasons_episodes_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/double_spacing"
+                    android:layout_marginTop="@dimen/default_spacing"
+                    android:layout_marginEnd="@dimen/double_spacing"
+                    android:layout_marginBottom="@dimen/double_spacing"
+                    android:orientation="vertical" />
 
-                </LinearLayout>
+            </LinearLayout>
 
         </ScrollView>
 
