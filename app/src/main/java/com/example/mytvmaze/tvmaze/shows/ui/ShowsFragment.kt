@@ -1,11 +1,9 @@
 package com.example.mytvmaze.tvmaze.shows.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mytvmaze.R
 import com.example.mytvmaze.core.extensions.*
@@ -32,7 +30,12 @@ class ShowsFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupSearch()
+        setupClickListeners()
+    }
+
+    private fun setupClickListeners() {
+        searchClickListener()
+        closeSearchClickListener()
     }
 
     override fun setupToolbar() = Unit
@@ -43,16 +46,25 @@ class ShowsFragment : BaseFragment() {
         searchListLoadedObserver()
     }
 
-    private fun setupSearch() {
+    private fun closeSearchClickListener() {
+        binding.ivCloseSearchIcon.setOnClickListener {
+            viewModel.toggleCloseSearchOption()
+            viewModel.toolbarTitle.value = ShowsViewModel.DEFAULT_TOOLBAR_TITLE
+            bindRecyclerViewWithDefault()
+        }
+    }
+
+
+    private fun searchClickListener() {
         binding.ivSearchIcon.setOnClickListener {
-            val dialog = DialogFactory.InputDialog(
+
+            DialogFactory.InputDialog(
                 requireContext(),
                 getString(R.string.search_dialog_title),
                 getString(R.string.search_dialog_message),
                 getString(R.string.search_dialog_button),
                 viewModel.input
-            )
-            dialog.show()
+            ).show()
         }
     }
 
@@ -68,8 +80,16 @@ class ShowsFragment : BaseFragment() {
 
     private fun bindRecyclerViewWithSearchResults() {
         val shows = viewModel.getShowsFromSearchResult()
-        setupShowListRecyclerView(shows)
+        if(viewModel.shouldShowCloseSearchButton.value == true) {
+            setupShowListRecyclerView(shows)
+        }
+    }
 
+    private fun bindRecyclerViewWithDefault() {
+        val shows = viewModel.showList.value
+        shows?.let {
+            setupShowListRecyclerView(it)
+        }
     }
 
     private fun showListLoadedObserver() {
@@ -84,6 +104,7 @@ class ShowsFragment : BaseFragment() {
         binding.rvShowsList.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = ShowListAdapter(list)
+            scheduleLayoutAnimation()
         }
     }
 

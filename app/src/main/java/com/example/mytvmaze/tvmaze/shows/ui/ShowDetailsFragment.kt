@@ -1,14 +1,15 @@
 package com.example.mytvmaze.tvmaze.shows.ui
 
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout.*
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.example.mytvmaze.R
 import com.example.mytvmaze.core.ui.fragment.BaseFragment
 import com.example.mytvmaze.databinding.FragmentShowsDetailsBinding
@@ -54,11 +55,12 @@ class ShowDetailsFragment : BaseFragment() {
     }
 
     private fun setupPoster() {
+        //Glide.with(this).load(args.show.poster?.original).into(binding.ivPoster)
         Picasso.get().load(args.show.poster?.original).into(binding.ivPoster)
     }
 
     override fun setupToolbar() {
-        binding.toolbar.setNavigationIcon(R.drawable.white_back_arrow)
+        binding.toolbar.setNavigationIcon(R.drawable.custom_white_back_arrow)
         binding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
     }
 
@@ -102,7 +104,7 @@ class ShowDetailsFragment : BaseFragment() {
         tvEpisode.apply {
             textSize = 17f
             text = episode.toString()
-            setTextColor(resources.getColor(R.color.black))
+            setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
             setOnClickListener { navigateToEpisodeDetailsScreen(episode) }
         }
         binding.seasonsEpisodesLayout.addView(tvEpisode, layoutParams)

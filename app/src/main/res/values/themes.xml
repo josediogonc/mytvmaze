@@ -31,7 +31,7 @@
         <item name="android:gravity">center_horizontal</item>
     </style>
 
-    <style name="show_list_title_huge" parent="TitleStyle">
+    <style name="TitleStyle.H1" parent="TitleStyle">
         <item name="android:textSize">25sp</item>
     </style>
 

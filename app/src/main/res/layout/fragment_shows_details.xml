@@ -51,7 +51,7 @@
                 android:orientation="vertical"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
+                <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/iv_poster"
                     android:layout_width="267dp"
                     android:layout_height="400dp"
@@ -59,10 +59,10 @@
                     android:layout_marginTop="20dp"
                     android:contentDescription="ShTV S"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/placeholder_movie_poster" />
+                    tools:targetApi="m" />
 
                 <TextView
-                    style="@style/show_list_title_huge"
+                    style="@style/TitleStyle.H1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_spacing"

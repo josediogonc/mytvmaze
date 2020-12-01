@@ -8,6 +8,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.mytvmaze.R
+import com.example.mytvmaze.core.extensions.showSoftInput
 import com.example.mytvmaze.databinding.LayoutCustomDialogBinding
 import kotlinx.android.synthetic.main.layout_custom_dialog.*
 import kotlinx.android.synthetic.main.layout_custom_dialog.bt
@@ -85,6 +86,7 @@ object DialogFactory {
             setContentView(R.layout.layout_input_dialog)
             setupViews()
             setupClickListener()
+            context.showSoftInput(et_input)
         }
 
         private fun setupClickListener() {
@@ -100,7 +102,7 @@ object DialogFactory {
             bt.text = actionButtonMsg
         }
 
-        fun getInputValue() = et_input.text.trim().toString()
+        private fun getInputValue() = et_input.text?.trim().toString()
     }
 
     open class CustomDialogWithOneButton(

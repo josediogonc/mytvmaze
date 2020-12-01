@@ -11,15 +11,21 @@ import kotlinx.coroutines.launch
 
 class ShowsViewModel(apiRepository: ApiRepository) : BaseViewModel(apiRepository) {
 
+    companion object {
+        const val DEFAULT_TOOLBAR_TITLE = "My TV Maze"
+    }
+
     val showList = MutableLiveData<List<Show>>()
     val searchList = MutableLiveData<List<ShowsResponse>>()
     val input = MutableLiveData("")
-    val toolbarTitle = MutableLiveData("My TV Maze")
+    val toolbarTitle = MutableLiveData(DEFAULT_TOOLBAR_TITLE)
+    val shouldShowCloseSearchButton = MutableLiveData(false)
 
-    val inputObserver = androidx.lifecycle.Observer<String> { inputValue ->
+    private val inputObserver = androidx.lifecycle.Observer<String> { inputValue ->
         inputValue?.let {
             if (it.isNotEmpty()) {
                 toolbarTitle.value = "Searching for '$it'"
+                shouldShowCloseSearchButton.value = true
                 searchShow(it)
             }
         }
@@ -43,7 +49,7 @@ class ShowsViewModel(apiRepository: ApiRepository) : BaseViewModel(apiRepository
         }
     }
 
-    fun searchShow(query : String) {
+    private fun searchShow(query : String) {
         if (query.isNotEmpty()) {
             viewModelScope.launch {
                 loading(true)
@@ -64,6 +70,12 @@ class ShowsViewModel(apiRepository: ApiRepository) : BaseViewModel(apiRepository
     override fun onCleared() {
         input.removeObserver(inputObserver)
         super.onCleared()
+    }
+
+    fun toggleCloseSearchOption() {
+        shouldShowCloseSearchButton.apply {
+            value = value != true
+        }
     }
 
 

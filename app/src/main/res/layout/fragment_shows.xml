@@ -22,7 +22,6 @@
             android:theme="@style/AppTheme.AppBarOverlay">
 
             <RelativeLayout
-                android:animateLayoutChanges="true"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 android:layout_gravity="center_horizontal"
@@ -37,13 +36,24 @@
                     android:layout_margin="10dp"
                     android:src="@drawable/ic_search" />
 
+                <ImageView
+                    android:id="@+id/iv_close_search_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@id/iv_search_icon"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_close"
+                    isVisible="@{viewModel.shouldShowCloseSearchButton}"/>
+
                 <TextView
                     android:layout_marginStart="@dimen/double_spacing"
+                    android:layout_marginEnd="@dimen/double_spacing"
                     android:textColor="@color/white"
                     android:text="@{viewModel.toolbarTitle}"
-                    android:fontFamily="@font/open_sans"
+                    android:fontFamily="@font/open_sans_semi_bold"
                     android:gravity="center_vertical"
-                    android:textSize="18sp"
+                    android:textSize="20sp"
                     android:id="@+id/tv_toolbar_text"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
@@ -64,8 +74,8 @@
                 android:layout_height="match_parent"
                 tools:context=".MainActivity"
                 android:layout_marginTop="@dimen/default_margin"
+                android:layoutAnimation="@anim/layout_animation"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"

@@ -43,11 +43,6 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
         getByName("debug") {
             isMinifyEnabled = false
             isTestCoverageEnabled = true
@@ -118,6 +113,9 @@ dependencies {
     api(config.Libs.PICASSO)
     api(config.Libs.MATERIAL_DESIGN)
     implementation(config.Libs.BIOMETRIC)
+
+    implementation ("com.github.bumptech.glide:glide:4.11.0")
+    kapt ("com.github.bumptech.glide:compiler:4.11.0")
 
     implementation(config.Libs.PICASSO)
     implementation(config.Libs.SHAPE_OF_VIEW)

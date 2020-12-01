@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mytvmaze.R
@@ -34,7 +33,7 @@ class EpisodeDetailsFragment : BaseFragment() {
     }
 
     override fun setupToolbar() {
-        binding.toolbar.setNavigationIcon(R.drawable.white_back_arrow)
+        binding.toolbar.setNavigationIcon(R.drawable.custom_white_back_arrow)
         binding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
     }
 

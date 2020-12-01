@@ -72,6 +72,8 @@ class ShowListViewHolder(
 
     private fun Show.initPoster() =
         this.poster?.medium?.let {
-            Picasso.get().load(it).into(binding.bannerImg)
+
+            val picasso = Picasso.get()
+                picasso.load(it).into(binding.bannerImg)
         }
 }
