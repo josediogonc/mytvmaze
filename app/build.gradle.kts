@@ -119,7 +119,6 @@ dependencies {
     implementation(config.Libs.PICASSO)
     implementation(config.Libs.ANDROID_SPIN_KIT)
     implementation(config.Libs.INSTALL_REFERRES)
-    implementation(config.Libs.BCPROV)
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     releaseImplementation(config.Libs.CHUCK_RELEASE_NO_OP)

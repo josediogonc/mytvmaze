@@ -27,15 +27,12 @@ class ShowDetailsViewModel(apiRepository: ApiRepository) : BaseViewModel(apiRepo
             val seasons = mutableListOf<Int>()
             episodesList.forEach { seasons.add(it.season) }
 
-
             for (season in seasons.distinct()) {
                 val episodesFromSeason = episodesList.filter { it.season == season }
                 episodesMap.put(season, episodesFromSeason)
             }
 
         }
-
-
 
         return episodesMap
     }

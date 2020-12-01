@@ -42,7 +42,6 @@ object Libs {
     const val PICASSO = "com.squareup.picasso:picasso:${Versioning.PICASSO_VERSION}"
     const val ANDROID_SPIN_KIT = "com.github.ybq:Android-SpinKit:1.4.0"
     const val INSTALL_REFERRES = "com.android.installreferrer:installreferrer:1.1"
-    const val BCPROV = "org.bouncycastle:bcprov-jdk16:1.46"
     const val DEBUG_DB = "com.amitshekhar.android:debug-db:1.0.6"
     const val CHUCK_DEBUG = "com.readystatesoftware.chuck:library:1.1.0"
     const val CHUCK_RELEASE_NO_OP = "com.readystatesoftware.chuck:library-no-op:1.1.0"

@@ -5,9 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout.*
+import android.widget.LinearLayout.LayoutParams
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mytvmaze.R
@@ -32,11 +31,9 @@ class ShowDetailsFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentShowsDetailsBinding.inflate(inflater, container, false)
-        binding.apply {
-            showData = args.show
-            viewModel = viewModel
-            lifecycleOwner = viewLifecycleOwner
-        }
+        binding.showData = args.show
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
 
@@ -49,14 +46,18 @@ class ShowDetailsFragment : BaseFragment() {
 
     private fun setupRatingBar() {
         args.show.rating.average?.let {
-            binding.ratingBar.rating = it /2
+            binding.ratingBar.rating = it / 2
         } ?: run {
             binding.ratingBar.visibility = View.GONE
         }
     }
 
     private fun setupPoster() {
-        ImageFactory.load(args.show.poster?.original, R.drawable.placeholder_movie_poster, binding.ivPoster)
+        ImageFactory.load(
+            args.show.poster?.original,
+            R.drawable.placeholder_movie_poster,
+            binding.ivPoster
+        )
     }
 
     override fun setupToolbar() {
@@ -87,15 +88,14 @@ class ShowDetailsFragment : BaseFragment() {
             initEpisodesView(episodes)
         }
         viewModel.loading(false)
-
     }
 
     private fun initEpisodesView(episodes: List<Episode>) {
-        for(episode in episodes) {
+        for (episode in episodes) {
             addEpisodeTextView(episode)
         }
     }
-    
+
     private fun navigateToEpisodeDetailsScreen(episode : Episode) {
         val action = ShowDetailsFragmentDirections.actionShowDetailsFragmentToEpisodeDetails(episode, args.show.name)
         findNavController().navigate(action)
@@ -103,7 +103,7 @@ class ShowDetailsFragment : BaseFragment() {
 
     private fun addEpisodeTextView(episode: Episode) {
         val layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT)
-        layoutParams.setMargins(10,15,10,15)
+        layoutParams.setMargins(10, 15, 10, 15)
         val tvEpisode = TextView(requireContext())
         tvEpisode.apply {
             textSize = 17f
@@ -116,7 +116,7 @@ class ShowDetailsFragment : BaseFragment() {
 
     private fun addSeasonTextView(value: String) {
         val layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT)
-        layoutParams.setMargins(10,30,10,30)
+        layoutParams.setMargins(10, 30, 10, 30)
         //layoutParams.gravity = Gravity.CENTER_HORIZONTAL
         val tvSeason = TextView(requireContext())
         tvSeason.apply {

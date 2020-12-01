@@ -3,10 +3,8 @@ package com.example.mytvmaze.core.network.retrofit.model
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.util.Log
 import com.example.mytvmaze.api.model.ApiResponse
 import com.squareup.moshi.JsonEncodingException
-import com.squareup.moshi.Moshi
 import okhttp3.ResponseBody
 import retrofit2.Response
 import java.io.IOException
@@ -35,49 +33,29 @@ class RetrofitResponse<T>(
     override fun success(data: T) = Resource.success(data)
 
     override fun error(code: Int, errorBody: ResponseBody?): Resource<T> {
-        val error: RequestError = if (errorBody != null) {
-            when (code) {
-                1, //TODO
-                5 -> {
-                    businessLogicError(errorBody)
-                }
-                else -> {
-                    genericError
-                }
-            }
-        } else {
-            genericError
-        }
-        return Resource.error(error)
+        return Resource.error(genericError)
     }
 
     override fun failure(exception: Exception): Resource<T> {
-        Log.e("failure", exception.message.toString())
         return when (exception) {
             is JsonEncodingException -> {
                 Resource.error(genericError)
             }
-
-            is UnknownHostException -> {
-                Resource.error(verifyInternetConection())
+            is UnknownHostException, is IOException -> {
+                Resource.error(verifyInternetConnection())
             }
-
-            is IOException -> {
-                Resource.error(verifyInternetConection())
-            }
-
             else -> {
                 Resource.error(genericError)
             }
         }
     }
 
-    private fun verifyInternetConection(): RequestError {
+    private fun verifyInternetConnection(): RequestError {
         return if(context != null) {
-            if (hasInternetConection(context)) {
+            if (hasInternetConnection(context)) {
                 genericError
             } else {
-                connectionError()
+                connectionError
             }
         }else{
             genericError
@@ -86,7 +64,7 @@ class RetrofitResponse<T>(
 
     private fun connectionError(): RequestError {
         return RequestError(
-            code = 400,
+            code = 401,
             title = "Connection error",
             message = "There is a connection error, check your internet connection"
         )
@@ -94,20 +72,12 @@ class RetrofitResponse<T>(
 
     companion object {
 
-        fun businessLogicError(errorBody: ResponseBody): RequestError {
-            val moshi = Moshi.Builder().build()
-            val jsonAdapter = moshi.adapter(RequestError::class.java)
-            val errorObject = jsonAdapter.fromJson(errorBody.string())
-            return if (errorObject == null || !errorObject.isValid()) {
-                genericError
-            } else {
-                RequestError(
-                    code = errorObject.code,
-                    title = errorObject.title,
-                    message = errorObject.message,
-                )
-            }
-        }
+        val connectionError: RequestError
+            get() = RequestError(
+                code = 401,
+                title = "Connection error",
+                message = "There is a connection error, check your internet connection"
+            )
 
         val genericError : RequestError
             get() = RequestError(
@@ -116,7 +86,7 @@ class RetrofitResponse<T>(
                 message = "something get wrong. check your internet connection and try again :)",
             )
 
-        private fun hasInternetConection(context: Context): Boolean {
+        private fun hasInternetConnection(context: Context): Boolean {
             val connectivityManager =
                 context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
@@ -126,7 +96,6 @@ class RetrofitResponse<T>(
                     NetworkCapabilities.TRANSPORT_CELLULAR
                 ))
             } else {
-                // Os metodos abaixo da 23 estão deprecated, então nesse caso vai retornar que ele possui internet para mostrar o erro generico
                 true
             }
         }
