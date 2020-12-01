@@ -1,4 +1,4 @@
-package com.example.mytvmaze.core
+package com.example.mytvmaze.core.image
 
 import android.widget.ImageView
 import com.squareup.picasso.Picasso

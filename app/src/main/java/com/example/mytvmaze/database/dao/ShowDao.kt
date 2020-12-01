@@ -1,4 +1,4 @@
-package com.example.mytvmaze.database
+package com.example.mytvmaze.database.dao
 
 import androidx.room.*
 import com.example.mytvmaze.tvmaze.shows.model.Show

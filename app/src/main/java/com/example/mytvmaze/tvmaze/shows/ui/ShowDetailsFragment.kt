@@ -10,7 +10,7 @@ import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mytvmaze.R
-import com.example.mytvmaze.core.ImageFactory
+import com.example.mytvmaze.core.image.ImageFactory
 import com.example.mytvmaze.core.extensions.getColor
 import com.example.mytvmaze.core.ui.fragment.BaseFragment
 import com.example.mytvmaze.databinding.FragmentShowsDetailsBinding

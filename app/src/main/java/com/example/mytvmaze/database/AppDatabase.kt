@@ -2,10 +2,8 @@ package com.example.mytvmaze.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverter
 import androidx.room.TypeConverters
-import com.example.mytvmaze.tvmaze.shows.model.PosterImage
-import com.example.mytvmaze.tvmaze.shows.model.Rating
+import com.example.mytvmaze.database.dao.ShowDao
 import com.example.mytvmaze.tvmaze.shows.model.Show
 
 @Database(entities = [Show::class], exportSchema = false, version = 5)

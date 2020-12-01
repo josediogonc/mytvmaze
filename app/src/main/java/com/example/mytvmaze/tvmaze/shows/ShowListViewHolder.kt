@@ -1,21 +1,13 @@
 package com.example.mytvmaze.tvmaze.shows
 
-import android.content.res.Resources
-import android.os.Bundle
-import android.text.Spanned
-import androidx.core.text.HtmlCompat
-import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mytvmaze.R
-import com.example.mytvmaze.core.ImageFactory
+import com.example.mytvmaze.core.image.ImageFactory
 import com.example.mytvmaze.core.extensions.toHTML
 import com.example.mytvmaze.databinding.LayoutShowListItemBinding
 import com.example.mytvmaze.tvmaze.shows.model.Show
 import com.example.mytvmaze.tvmaze.shows.ui.ShowsFragmentDirections
-import com.squareup.picasso.Picasso
 
 class ShowListViewHolder(
     private val binding: LayoutShowListItemBinding) :
