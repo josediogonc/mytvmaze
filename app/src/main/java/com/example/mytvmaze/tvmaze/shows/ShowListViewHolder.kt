@@ -10,6 +10,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mytvmaze.R
+import com.example.mytvmaze.core.ImageFactory
 import com.example.mytvmaze.core.extensions.toHTML
 import com.example.mytvmaze.databinding.LayoutShowListItemBinding
 import com.example.mytvmaze.tvmaze.shows.model.Show
@@ -72,8 +73,6 @@ class ShowListViewHolder(
 
     private fun Show.initPoster() =
         this.poster?.medium?.let {
-
-            val picasso = Picasso.get()
-                picasso.load(it).into(binding.bannerImg)
+            ImageFactory.load(it, binding.bannerImg)
         }
 }

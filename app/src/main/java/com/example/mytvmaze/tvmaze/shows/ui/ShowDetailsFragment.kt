@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.example.mytvmaze.R
+import com.example.mytvmaze.core.ImageFactory
 import com.example.mytvmaze.core.ui.fragment.BaseFragment
 import com.example.mytvmaze.databinding.FragmentShowsDetailsBinding
 import com.example.mytvmaze.tvmaze.shows.model.Episode
@@ -55,8 +56,7 @@ class ShowDetailsFragment : BaseFragment() {
     }
 
     private fun setupPoster() {
-        //Glide.with(this).load(args.show.poster?.original).into(binding.ivPoster)
-        Picasso.get().load(args.show.poster?.original).into(binding.ivPoster)
+        ImageFactory.load(args.show.poster?.original, binding.ivPoster)
     }
 
     override fun setupToolbar() {

@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.mytvmaze.R
+import com.example.mytvmaze.core.ImageFactory
 import com.example.mytvmaze.core.ui.fragment.BaseFragment
 import com.example.mytvmaze.databinding.FragmentEpisodeDetailsBinding
 import com.squareup.picasso.Picasso
@@ -39,7 +40,7 @@ class EpisodeDetailsFragment : BaseFragment() {
 
     private fun setupPoster() {
         args.episode.poster?.let {
-            Picasso.get().load(it.original).into(binding.ivPoster)
+            ImageFactory.load(it.original, binding.ivPoster)
         }
     }
 }
