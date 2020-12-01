@@ -20,7 +20,3 @@ fun <T> Resource<T>.validateResponse(success: MutableLiveData<T>, error: Mutable
         }
     }
 }
-
-suspend fun <T> Response<T>.toResource(context: Context,): Resource<T> {
-    return RetrofitResponse(context) { this }.result()
-}

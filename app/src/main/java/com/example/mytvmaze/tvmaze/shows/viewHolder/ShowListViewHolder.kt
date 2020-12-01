@@ -1,4 +1,4 @@
-package com.example.mytvmaze.tvmaze.shows
+package com.example.mytvmaze.tvmaze.shows.viewHolder
 
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView

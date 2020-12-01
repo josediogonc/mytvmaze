@@ -1,10 +1,10 @@
-package com.example.mytvmaze.tvmaze.shows
+package com.example.mytvmaze.tvmaze.shows.adapters
 
-import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mytvmaze.databinding.LayoutShowListItemBinding
+import com.example.mytvmaze.tvmaze.shows.viewHolder.ShowListViewHolder
 import com.example.mytvmaze.tvmaze.shows.model.Show
 
 

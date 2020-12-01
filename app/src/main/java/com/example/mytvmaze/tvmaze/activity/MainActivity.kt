@@ -1,4 +1,4 @@
-package com.example.mytvmaze.tvmaze
+package com.example.mytvmaze.tvmaze.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,16 +9,12 @@ import com.example.mytvmaze.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView()
+    }
 
+    private fun setContentView() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         binding.lifecycleOwner = this
         setContentView(binding.root)
-/*
-        val navController = Navigation.findNavController(this, R.id.fragment_navhost)
-        val navInflater = navController.navInflater
-        val graph = navInflater.inflate(R.navigation.app_navigation)
-        navController.graph = graph*/
-
-
     }
 }

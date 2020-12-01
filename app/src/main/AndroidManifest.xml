@@ -6,8 +6,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".tvmaze.MainApplication"
@@ -20,7 +18,7 @@
         android:theme="@style/Theme.MyTVMaze"
         tools:targetApi="m">
 
-        <activity android:name=".tvmaze.SplashScreenActivity"
+        <activity android:name=".tvmaze.activity.SplashScreenActivity"
             android:screenOrientation="portrait"
             android:theme="@style/SplashScreenTheme"
             android:windowSoftInputMode="adjustResize">
@@ -31,7 +29,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.example.mytvmaze.tvmaze.MainActivity"
+        <activity android:name="com.example.mytvmaze.tvmaze.activity.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.MyTVMaze"
             android:windowSoftInputMode="adjustResize" />

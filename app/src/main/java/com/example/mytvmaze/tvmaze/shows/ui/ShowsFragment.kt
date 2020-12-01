@@ -5,11 +5,10 @@ import android.view.*
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mytvmaze.R
-import com.example.mytvmaze.core.extensions.*
 import com.example.mytvmaze.databinding.FragmentShowsBinding
 import com.example.mytvmaze.core.ui.dialog.DialogFactory
 import com.example.mytvmaze.core.ui.fragment.BaseFragment
-import com.example.mytvmaze.tvmaze.shows.ShowListAdapter
+import com.example.mytvmaze.tvmaze.shows.adapters.ShowListAdapter
 import com.example.mytvmaze.tvmaze.shows.model.Show
 import com.example.mytvmaze.tvmaze.shows.viewModel.ShowsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel

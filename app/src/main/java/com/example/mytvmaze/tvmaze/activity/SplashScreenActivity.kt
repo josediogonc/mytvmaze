@@ -1,4 +1,4 @@
-package com.example.mytvmaze.tvmaze
+package com.example.mytvmaze.tvmaze.activity
 
 import android.content.Intent
 import android.os.Bundle
