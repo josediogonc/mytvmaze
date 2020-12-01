@@ -21,6 +21,7 @@ class ShowsViewModel(apiRepository: ApiRepository) : BaseViewModel(apiRepository
     val input = MutableLiveData("")
     val toolbarTitle = MutableLiveData(DEFAULT_TOOLBAR_TITLE)
     val shouldShowCloseSearchButton = MutableLiveData(false)
+    val page = MutableLiveData(0)
 
     private val inputObserver = androidx.lifecycle.Observer<String> { inputValue ->
         inputValue?.let {
@@ -33,7 +34,7 @@ class ShowsViewModel(apiRepository: ApiRepository) : BaseViewModel(apiRepository
     }
 
     init {
-        getShowsByPage(1)
+        getShowsByPage(page.value ?: 1)
         initObservable()
     }
 
@@ -78,6 +79,22 @@ class ShowsViewModel(apiRepository: ApiRepository) : BaseViewModel(apiRepository
             value = value != true
         }
     }
+
+    fun getShowsFromNextPage() {
+        page.value = page.value?.plus(1)
+        getShowsByPage(page.value ?: 0)
+    }
+
+    fun getShowsFromPreviousPage() {
+        page.value?.let { it
+            if ( it > 0 ) {
+                page.value = it - 1
+                getShowsByPage(it - 1)
+            }
+        }
+    }
+
+    fun getPageValue() = page.value?.plus(1).toString()
 
 
 }

@@ -1,9 +1,7 @@
 package com.example.mytvmaze.tvmaze.shows.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mytvmaze.R
@@ -32,14 +30,35 @@ class ShowsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupClickListeners()
+        bindPageNumber()
     }
 
     private fun setupClickListeners() {
         searchClickListener()
         closeSearchClickListener()
+        nextPageClickListener()
+        previousPageClickListeners()
     }
 
     override fun setupToolbar() = Unit
+
+    private fun nextPageClickListener() {
+        binding.ivNextPage.setOnClickListener {
+            viewModel.getShowsFromNextPage()
+            bindPageNumber()
+        }
+    }
+
+    private fun previousPageClickListeners() {
+        binding.ivPreviousPage.setOnClickListener {
+            viewModel.getShowsFromPreviousPage()
+            bindPageNumber()
+        }
+    }
+
+    private fun bindPageNumber() {
+        binding.tvPage.text = viewModel.getPageValue()
+    }
 
     override fun setupObservers() {
         errorDialogObserver()

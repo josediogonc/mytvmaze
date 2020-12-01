@@ -28,6 +28,7 @@
                 app:layout_scrollFlags="scroll|enterAlways">
 
                 <ImageView
+                    android:clickable="@{viewModel.loading == false}"
                     android:id="@+id/iv_search_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -37,6 +38,7 @@
                     android:src="@drawable/ic_search" />
 
                 <ImageView
+                    android:clickable="@{viewModel.loading == false}"
                     android:id="@+id/iv_close_search_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -45,6 +47,42 @@
                     android:layout_margin="10dp"
                     android:src="@drawable/ic_close"
                     isVisible="@{viewModel.shouldShowCloseSearchButton}"/>
+
+                <ImageView
+                    android:clickable="@{viewModel.loading == false}"
+                    android:id="@+id/iv_next_page"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@id/iv_close_search_icon"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/ic_next"
+                    isVisible="@{!viewModel.shouldShowCloseSearchButton}"/>
+
+                <TextView
+                    android:id="@+id/tv_page"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@id/iv_next_page"
+                    android:layout_centerVertical="true"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:text=""
+                    tools:text="1"
+                    isVisible="@{!viewModel.shouldShowCloseSearchButton}"/>
+
+                <ImageView
+                    android:clickable="@{viewModel.loading == false}"
+                    android:id="@+id/iv_previous_page"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_toLeftOf="@id/tv_page"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="5dp"
+                    android:src="@drawable/ic_before"
+                    isVisible="@{!viewModel.shouldShowCloseSearchButton}"/>
 
                 <TextView
                     android:layout_marginStart="@dimen/double_spacing"
