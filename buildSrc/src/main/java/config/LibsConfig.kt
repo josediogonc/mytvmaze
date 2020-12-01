@@ -23,10 +23,6 @@ object Libs {
     const val ROOM_COMPILER = "androidx.room:room-compiler:${Versioning.ROOM_VERSION}"
     const val ROOM_KTX = "androidx.room:room-ktx:${Versioning.ROOM_VERSION}"
 
-    const val FIREBASE_BOM = "com.google.firebase:firebase-bom:${Versioning.FIREBASE_BOM_VERSION}"
-    const val FIREBASE_CONFIG_KTX = "com.google.firebase:firebase-config-ktx"
-    const val FIREBASE_CORE = "com.google.firebase:firebase-core"
-
     const val MATERIAL_DESIGN = "com.google.android.material:material:1.2.1"
 
     const val KOTLIN_JAVA8 = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versioning.KOTLIN_VERSION}"
@@ -44,17 +40,10 @@ object Libs {
     const val OKHTTP3_LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${Versioning.OKHTTP3_LOGGING_INTERCEPTOR_VERSION}" //não alterar a versão problema com API 16
 
     const val PICASSO = "com.squareup.picasso:picasso:${Versioning.PICASSO_VERSION}"
-    const val ANDROID_IMAGE_CROPPER = "com.theartofdev.edmodo:android-image-cropper:2.8.0"
-    const val LOTTIE = "com.airbnb.android:lottie:3.1.0"
     const val ANDROID_SPIN_KIT = "com.github.ybq:Android-SpinKit:1.4.0"
     const val INSTALL_REFERRES = "com.android.installreferrer:installreferrer:1.1"
     const val BCPROV = "org.bouncycastle:bcprov-jdk16:1.46"
     const val DEBUG_DB = "com.amitshekhar.android:debug-db:1.0.6"
-    const val VIEW_PAGER_DOT_INDICATOR = "com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2"
-    const val SHAPE_OF_VIEW = "com.github.florent37:shapeofview:1.4.7"
-    const val CHART_VIEW = "com.ramijemli.percentagechartview:percentagechartview:0.3.0"
-    const val SHIMMER = "com.facebook.shimmer:shimmer:0.5.0"
-    const val SWIPE_REFRESH = "com.reginald.swiperefresh:library:1.1.2"
     const val CHUCK_DEBUG = "com.readystatesoftware.chuck:library:1.1.0"
     const val CHUCK_RELEASE_NO_OP = "com.readystatesoftware.chuck:library-no-op:1.1.0"
 
@@ -72,12 +61,6 @@ object Libs {
         implementation(LIFECYCLE_VIEWMODEL)
         implementation(LIFECYCLE_EXTENSIONS)
         implementation(LIFECYCLE_COMMON_JAVA8)
-    }
-
-    fun DependencyHandler.firebase() {
-        implementation(platform(FIREBASE_BOM))
-        implementation(FIREBASE_CONFIG_KTX)
-        implementation(FIREBASE_CORE)
     }
 
     fun DependencyHandler.navigation() {

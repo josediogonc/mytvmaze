@@ -1,6 +1,5 @@
 import config.Libs.androidx
 import config.Libs.coroutines
-import config.Libs.firebase
 import config.Libs.koin
 import config.Libs.lifecycle
 import config.Libs.moshi
@@ -118,12 +117,9 @@ dependencies {
     kapt ("com.github.bumptech.glide:compiler:4.11.0")
 
     implementation(config.Libs.PICASSO)
-    implementation(config.Libs.SHAPE_OF_VIEW)
     implementation(config.Libs.ANDROID_SPIN_KIT)
     implementation(config.Libs.INSTALL_REFERRES)
     implementation(config.Libs.BCPROV)
-    implementation(config.Libs.CHART_VIEW)
-    implementation(config.Libs.SWIPE_REFRESH)
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
     releaseImplementation(config.Libs.CHUCK_RELEASE_NO_OP)
@@ -141,7 +137,6 @@ dependencies {
     androidx()
     lifecycle()
     room()
-    firebase()
     koin()
     coroutines()
     navigation()
