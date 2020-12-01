@@ -22,4 +22,5 @@
     <string name="search_dialog_title">Search a TV Show</string>
     <string name="search_dialog_message">Please, write over some keywords for your search</string>
     <string name="search_dialog_button">Search</string>
+    <string name="search_on_tvmaze">Search on TV Maze</string>
 </resources>

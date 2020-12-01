@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.mytvmaze.core.viewModel.BaseViewModel
 import com.example.mytvmaze.api.repository.ApiRepository
+import com.example.mytvmaze.core.network.retrofit.model.Resource
 import com.example.mytvmaze.core.network.retrofit.validateResponse
 import com.example.mytvmaze.tvmaze.shows.model.Show
 import com.example.mytvmaze.tvmaze.shows.model.ShowsResponse

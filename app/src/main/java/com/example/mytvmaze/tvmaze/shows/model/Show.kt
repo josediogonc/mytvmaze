@@ -39,7 +39,7 @@ data class Show(
     val type : String,
 
     @field:Json(name = "premiered")
-    val premiered : String,
+    val premiered : String? = null,
 
     @TypeConverters(RatingConverter::class)
     @field:Json(name = "rating")
@@ -65,4 +65,8 @@ data class Show(
     }
 
     val formattedSummary get() = summary?.removeOutsideParagraph() ?: "(Summary not found)"
+
+    val formattedNetwork get() = network?.toString() ?: "(unknown)"
+
+    val formattedPremieredDate get() = premiered ?: "(unknown)"
 }

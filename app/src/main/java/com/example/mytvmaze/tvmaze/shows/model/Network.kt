@@ -13,6 +13,6 @@ data class Network (
 
 ) : Parcelable {
 
-    override fun toString() = this.name?.let { it } ?: "Unknown"
+    override fun toString() = this.name?.let { it } ?: "(unknown)"
 
 }

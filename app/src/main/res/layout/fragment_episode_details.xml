@@ -75,7 +75,7 @@
 
                 <TextView
                     android:id="@+id/tv_show_genres"
-                    style="@style/label_style"
+                    style="@style/GenreStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/double_spacing"
@@ -86,7 +86,7 @@
 
                 <TextView
                     android:id="@+id/label_summary"
-                    style="@style/label_style_detail"
+                    style="@style/TitleStyle.H2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/double_spacing"
@@ -96,7 +96,7 @@
                     android:text="@string/episode_summary" />
 
                 <TextView
-                    style="@style/long_text"
+                    style="@style/LongTextStyle"
                     android:id="@+id/movie_summary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

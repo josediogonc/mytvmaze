@@ -1,5 +1,6 @@
 package com.example.mytvmaze.core.network.retrofit
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import com.example.mytvmaze.core.network.retrofit.model.RequestError
 import com.example.mytvmaze.core.network.retrofit.model.Resource
@@ -20,6 +21,6 @@ fun <T> Resource<T>.validateResponse(success: MutableLiveData<T>, error: Mutable
     }
 }
 
-suspend fun <T> Response<T>.toResource(): Resource<T> {
-    return RetrofitResponse { this }.result()
+suspend fun <T> Response<T>.toResource(context: Context,): Resource<T> {
+    return RetrofitResponse(context) { this }.result()
 }

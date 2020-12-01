@@ -1,5 +1,8 @@
 package com.example.mytvmaze.core.network.retrofit.model
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.util.Log
 import com.example.mytvmaze.api.model.ApiResponse
 import com.squareup.moshi.JsonEncodingException
@@ -10,6 +13,7 @@ import java.io.IOException
 import java.net.UnknownHostException
 
 class RetrofitResponse<T>(
+    private val context: Context?,
     private val request: suspend () -> Response<T>
 ) : ApiResponse<T> {
 
@@ -55,19 +59,37 @@ class RetrofitResponse<T>(
             }
 
             is UnknownHostException -> {
-                Resource.error(genericError)
-                //Resource.error(verifyInternetConection())
+                Resource.error(verifyInternetConection())
             }
 
             is IOException -> {
-                Resource.error(genericError)
-                //Resource.error(verifyInternetConection())
+                Resource.error(verifyInternetConection())
             }
 
             else -> {
                 Resource.error(genericError)
             }
         }
+    }
+
+    private fun verifyInternetConection(): RequestError {
+        return if(context != null) {
+            if (hasInternetConection(context)) {
+                genericError
+            } else {
+                connectionError()
+            }
+        }else{
+            genericError
+        }
+    }
+
+    private fun connectionError(): RequestError {
+        return RequestError(
+            code = 400,
+            title = "Connection error",
+            message = "There is a connection error, check your internet connection"
+        )
     }
 
     companion object {
@@ -89,9 +111,24 @@ class RetrofitResponse<T>(
 
         val genericError : RequestError
             get() = RequestError(
-                code = 123, //TODO: check code
+                code = 400,
                 title = "ops!",
                 message = "something get wrong. check your internet connection and try again :)",
             )
+
+        private fun hasInternetConection(context: Context): Boolean {
+            val connectivityManager =
+                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+                val network = connectivityManager.activeNetwork
+                val capabilities = connectivityManager.getNetworkCapabilities(network)
+                capabilities != null && (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) || capabilities.hasTransport(
+                    NetworkCapabilities.TRANSPORT_CELLULAR
+                ))
+            } else {
+                // Os metodos abaixo da 23 estão deprecated, então nesse caso vai retornar que ele possui internet para mostrar o erro generico
+                true
+            }
+        }
     }
 }

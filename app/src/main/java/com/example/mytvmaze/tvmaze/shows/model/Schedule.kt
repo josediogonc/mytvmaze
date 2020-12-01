@@ -15,6 +15,9 @@ data class Schedule (
 
     ) : Parcelable {
 
-        override fun toString() = "$time ${days.joinToString(separator = ", ") { it }}"
+        override fun toString() : String {
+            val scheduleString = "$time ${days.joinToString(separator = ", ") { it } }"
+            return if (scheduleString.trim().isNotEmpty()) scheduleString else "(unknown)"
+        }
 
     }

@@ -32,7 +32,7 @@ val CoreModule = module {
 
     // TVMaze API
     single { get<Retrofit>().create(ApiService::class.java) }
-    factory<ApiRepository> { ApiRepositoryImpl(get()) }
+    factory<ApiRepository> { ApiRepositoryImpl(get(), get()) }
 
     // ViewModels
     viewModel { ShowsViewModel(get()) }

@@ -76,7 +76,7 @@
                     android:id="@+id/tv_show_genres"
                     android:layout_marginStart="@dimen/default_spacing"
                     android:layout_marginEnd="@dimen/default_spacing"
-                    style="@style/label_style"
+                    style="@style/GenreStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@{showData.genresAsString}"
@@ -91,14 +91,14 @@
 
                     <TextView
                         android:id="@+id/label_date_released"
-                        style="@style/label_style_detail_smaller"
+                        style="@style/LabelStyle"
                         android:layout_width="wrap_content"
                         android:layout_alignParentTop="true"
                         android:text="@string/date_released" />
 
                     <TextView
                         android:id="@+id/label_rating"
-                        style="@style/label_style_detail_smaller"
+                        style="@style/LabelStyle"
                         android:layout_width="wrap_content"
                         android:layout_below="@id/label_date_released"
                         android:minWidth="100dp"
@@ -106,36 +106,36 @@
 
                     <TextView
                         android:id="@+id/label_network"
-                        style="@style/label_style_detail_smaller"
+                        style="@style/LabelStyle"
                         android:layout_width="wrap_content"
                         android:layout_below="@id/label_rating"
                         android:text="@string/network" />
 
                     <TextView
                         android:id="@+id/label_shedule"
-                        style="@style/label_style_detail_smaller"
+                        style="@style/LabelStyle"
                         android:layout_width="wrap_content"
                         android:layout_below="@id/label_network"
                         android:text="@string/schedule" />
 
                     <TextView
-                        style="@style/properties_style"
+                        style="@style/PropertyStyle"
                         android:layout_width="wrap_content"
                         android:layout_toEndOf="@id/label_date_released"
-                        android:text="@{showData.premiered}"
+                        android:text="@{showData.formattedPremieredDate}"
                         tools:text="2010-01-01" />
 
                     <TextView
-                        style="@style/properties_style"
+                        style="@style/PropertyStyle"
                         android:layout_width="wrap_content"
                         android:layout_below="@id/label_rating"
                         android:layout_toEndOf="@id/label_network"
-                        android:text="@{showData.network.toString()}"
+                        android:text="@{showData.formattedNetwork}"
                         tools:text="HBO" />
 
                     <TextView
                         android:id="@+id/rating_value"
-                        style="@style/properties_style"
+                        style="@style/PropertyStyle"
                         android:layout_width="wrap_content"
                         android:layout_below="@id/label_date_released"
                         android:layout_toEndOf="@id/label_rating"
@@ -145,7 +145,7 @@
                     <RatingBar
                         android:layout_below="@id/label_date_released"
                         android:layout_toRightOf="@id/rating_value"
-                        android:theme="@style/RatingBar"
+                        android:theme="@style/RatingBarTheme"
                         android:id="@+id/ratingBar"
                         style="?android:attr/ratingBarStyleSmall"
                         android:layout_width="wrap_content"
@@ -159,7 +159,7 @@
                         android:stepSize="0.1" />
 
                     <TextView
-                        style="@style/properties_style"
+                        style="@style/PropertyStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/label_network"
@@ -172,7 +172,7 @@
 
                 <TextView
                     android:id="@+id/label_summary"
-                    style="@style/label_style_detail"
+                    style="@style/TitleStyle.H2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/default_spacing"
@@ -182,7 +182,7 @@
                     android:text="@string/show_summary" />
 
                 <TextView
-                    style="@style/long_text"
+                    style="@style/LongTextStyle"
                     android:id="@+id/movie_summary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -193,7 +193,7 @@
 
                 <TextView
                     android:id="@+id/label_seasons"
-                    style="@style/label_style_detail"
+                    style="@style/TitleStyle.H2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/double_spacing"

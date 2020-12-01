@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mytvmaze.R
 import com.example.mytvmaze.core.extensions.*
@@ -71,7 +72,7 @@ class ShowsFragment : BaseFragment() {
     private fun searchListLoadedObserver() {
         viewModel.searchList.observe(viewLifecycleOwner, { searchList ->
             searchList.let {
-                if(it.isNotEmpty()) {
+                if(viewModel.shouldShowCloseSearchButton.value == true) {
                     bindRecyclerViewWithSearchResults()
                 }
             }
@@ -80,7 +81,11 @@ class ShowsFragment : BaseFragment() {
 
     private fun bindRecyclerViewWithSearchResults() {
         val shows = viewModel.getShowsFromSearchResult()
-        if(viewModel.shouldShowCloseSearchButton.value == true) {
+        if(shows.isEmpty()) {
+            viewModel.toolbarTitle.value = ShowsViewModel.DEFAULT_TOOLBAR_TITLE
+            viewModel.shouldShowCloseSearchButton.value = false
+            Toast.makeText(requireContext(), "No results found for search '${viewModel.input.value}'", Toast.LENGTH_LONG).show()
+        } else if(viewModel.shouldShowCloseSearchButton.value == true) {
             setupShowListRecyclerView(shows)
         }
     }
@@ -112,9 +117,10 @@ class ShowsFragment : BaseFragment() {
         viewModel.errorDialog.observe(viewLifecycleOwner, { error ->
             error?.let {
                 DialogFactory.CustomDialog(
+                    requireContext(),
                     error.title,
                     error.message
-                ).show(supportFragmentManager, "tag")
+                ).show()
             }
         })
     }

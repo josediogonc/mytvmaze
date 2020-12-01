@@ -59,7 +59,7 @@ class ShowListViewHolder(
         "<b>Status: </b> $status".toHTML().also { binding.tvStatus.text = it }
 
     private fun Show.initPremiered() =
-        "<b>Premiered: </b> $premiered".toHTML().also { binding.tvPremiered.text = it }
+        "<b>Premiered: </b> ${premiered ?: "(unknown)" }".toHTML().also { binding.tvPremiered.text = it }
 
     private fun Show.initType() =
         "<b>Type: </b> $type".toHTML().also { binding.tvType.text = it }

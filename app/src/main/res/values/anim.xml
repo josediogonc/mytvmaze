@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="WindowAnimationTransition">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_right_offscreen_to_screen</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_screen_to_left_offscreen</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_from_left_offscreen_to_screen</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_screen_to_right_offscreen</item>
+    </style>
+</resources>

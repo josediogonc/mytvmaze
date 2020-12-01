@@ -56,7 +56,7 @@
                         android:gravity="center">
 
                         <RatingBar
-                            android:theme="@style/RatingBar"
+                            android:theme="@style/RatingBarTheme"
                             android:id="@+id/ratingBar"
                             style="?android:attr/ratingBarStyleSmall"
                             android:layout_width="wrap_content"
@@ -111,7 +111,7 @@
                                 android:text="TV Show Title" />
 
                             <TextView
-                                style="@style/label_style"
+                                style="@style/GenreStyle"
                                 android:layout_marginTop="@dimen/default_spacing"
                                 android:layout_marginBottom="@dimen/default_spacing"
                                 android:id="@+id/tv_genres"

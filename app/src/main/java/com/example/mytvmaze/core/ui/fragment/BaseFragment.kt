@@ -22,10 +22,11 @@ abstract class BaseFragment : Fragment() {
 
     protected fun showDefaultErrorDialog() {
         DialogFactory.CustomDialog(
+            requireContext(),
             title = getString(R.string.error_title_default),
             message = getString(R.string.error_message_default),
-            buttonAction = { requireActivity().onBackPressed() }
-        ).show(supportFragmentManager, "tag")
+            action = { requireActivity().onBackPressed() }
+        ).show()
     }
 
 }

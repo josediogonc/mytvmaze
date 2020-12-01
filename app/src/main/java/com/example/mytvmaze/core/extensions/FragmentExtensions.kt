@@ -2,6 +2,7 @@ package com.example.mytvmaze.core.extensions
 
 import android.content.Context
 import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
@@ -16,20 +17,9 @@ fun FragmentActivity.hideSoftInput() {
 
 fun Fragment.hideSoftInput() =  requireActivity().hideSoftInput()
 
-fun FragmentActivity.showSoftInput(view : View) {
-    Handler().postDelayed( {
-        val imm = this.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-        imm?.showSoftInput(view, 0)
-    }, 200)
-
-}
-
 fun Context.showSoftInput(view : View) {
-    Handler().postDelayed( {
+    Handler(Looper.getMainLooper()).postDelayed({
         val imm = this.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         imm?.showSoftInput(view, 0)
-    }, 200)
-
+    }, 100)
 }
-
-fun Fragment.showSoftInput(view : View) = requireActivity().showSoftInput(view)

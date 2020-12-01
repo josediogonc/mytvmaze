@@ -37,7 +37,10 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_custom_dialog_title"
             tools:text="Esse é um exemplo de uma mensagem que teria aqui dentro" />
 
-        <androidx.appcompat.widget.AppCompatEditText
+        <com.google.android.material.textfield.TextInputEditText
+            android:drawablePadding="15dp"
+            android:padding="12dp"
+            android:background="@drawable/bg_search"
             android:id="@+id/et_input"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -45,23 +48,28 @@
             android:layout_marginTop="@dimen/double_spacing"
             android:layout_marginEnd="@dimen/double_spacing"
             android:textColor="@color/black"
+            android:hint="@string/search_on_tvmaze"
+            android:textColorHint="@android:color/darker_gray"
             android:textCursorDrawable="@null"
+            android:imeOptions="actionDone"
+            android:singleLine="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_custom_dialog_message">
 
             <requestFocus/>
 
-        </androidx.appcompat.widget.AppCompatEditText>
+        </com.google.android.material.textfield.TextInputEditText>
 
         <Button
             android:id="@+id/bt"
-            style="@style/Button"
+            style="@style/ButtonStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/double_spacing"
             android:textAllCaps="true"
             android:textColor="@color/white"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
