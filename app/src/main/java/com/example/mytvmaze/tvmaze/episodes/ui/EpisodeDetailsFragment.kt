@@ -40,7 +40,7 @@ class EpisodeDetailsFragment : BaseFragment() {
 
     private fun setupPoster() {
         args.episode.poster?.let {
-            ImageFactory.load(it.original, binding.ivPoster)
+            ImageFactory.load(it.original, R.drawable.placeholder_movie_poster, binding.ivPoster)
         }
     }
 }

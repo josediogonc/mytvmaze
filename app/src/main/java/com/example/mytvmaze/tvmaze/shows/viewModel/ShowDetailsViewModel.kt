@@ -17,8 +17,6 @@ class ShowDetailsViewModel(apiRepository: ApiRepository) : BaseViewModel(apiRepo
             loading(true)
             val resource = apiRepository.getEpisodes(showId)
             resource.validateResponse(episodes, _errorDialog)
-            loading(false)
-            getEpisodesMappedBySeason()
         }
     }
 
@@ -36,6 +34,8 @@ class ShowDetailsViewModel(apiRepository: ApiRepository) : BaseViewModel(apiRepo
             }
 
         }
+
+
 
         return episodesMap
     }

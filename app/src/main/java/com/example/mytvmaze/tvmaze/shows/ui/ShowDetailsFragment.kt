@@ -1,5 +1,6 @@
 package com.example.mytvmaze.tvmaze.shows.ui
 
+import android.graphics.Typeface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,14 +10,13 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
 import com.example.mytvmaze.R
 import com.example.mytvmaze.core.ImageFactory
+import com.example.mytvmaze.core.extensions.getColor
 import com.example.mytvmaze.core.ui.fragment.BaseFragment
 import com.example.mytvmaze.databinding.FragmentShowsDetailsBinding
 import com.example.mytvmaze.tvmaze.shows.model.Episode
 import com.example.mytvmaze.tvmaze.shows.viewModel.ShowDetailsViewModel
-import com.squareup.picasso.Picasso
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -56,12 +56,14 @@ class ShowDetailsFragment : BaseFragment() {
     }
 
     private fun setupPoster() {
-        ImageFactory.load(args.show.poster?.original, binding.ivPoster)
+        ImageFactory.load(args.show.poster?.original, R.drawable.placeholder_movie_poster, binding.ivPoster)
     }
 
     override fun setupToolbar() {
-        binding.toolbar.setNavigationIcon(R.drawable.custom_white_back_arrow)
-        binding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
+        binding.toolbar.apply {
+            setNavigationIcon(R.drawable.custom_white_back_arrow)
+            setNavigationOnClickListener { findNavController().popBackStack() }
+        }
     }
 
     override fun setupObservers() {
@@ -84,6 +86,8 @@ class ShowDetailsFragment : BaseFragment() {
             addSeasonTextView("Season $season")
             initEpisodesView(episodes)
         }
+        viewModel.loading(false)
+
     }
 
     private fun initEpisodesView(episodes: List<Episode>) {
@@ -104,7 +108,7 @@ class ShowDetailsFragment : BaseFragment() {
         tvEpisode.apply {
             textSize = 17f
             text = episode.toString()
-            setTextColor(ContextCompat.getColor(requireContext(), R.color.black))
+            setTextColor(getColor(R.color.black))
             setOnClickListener { navigateToEpisodeDetailsScreen(episode) }
         }
         binding.seasonsEpisodesLayout.addView(tvEpisode, layoutParams)
@@ -112,13 +116,14 @@ class ShowDetailsFragment : BaseFragment() {
 
     private fun addSeasonTextView(value: String) {
         val layoutParams = LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT)
-        layoutParams.setMargins(10,50,10,30)
+        layoutParams.setMargins(10,30,10,30)
         //layoutParams.gravity = Gravity.CENTER_HORIZONTAL
         val tvSeason = TextView(requireContext())
         tvSeason.apply {
             textSize = 18f
             text = value.toUpperCase(Locale.getDefault())
-            setTextColor(resources.getColor(R.color.color_primary_dark))
+            setTextColor(getColor(R.color.color_secundary))
+            setTypeface(typeface, Typeface.BOLD)
         }
         binding.seasonsEpisodesLayout.addView(tvSeason, layoutParams)
     }

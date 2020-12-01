@@ -11,7 +11,6 @@ interface ApiRepository {
 
     suspend fun getShows(@Query("q") query: String): Resource<List<ShowsResponse>>
     suspend fun getShowsByPage(@Query("page") page: Int): Resource<List<Show>>
-    suspend fun getShowById(@Path("id") id: Int): Resource<Show>
     suspend fun getEpisodes(@Path("id") showId: Int): Resource<List<Episode>>
 
 }

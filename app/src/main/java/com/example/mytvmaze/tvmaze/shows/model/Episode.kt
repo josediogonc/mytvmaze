@@ -2,7 +2,6 @@ package com.example.mytvmaze.tvmaze.shows.model
 
 import android.os.Parcelable
 import com.example.mytvmaze.core.extensions.removeOutsideParagraph
-import com.example.mytvmaze.core.extensions.toHTML
 import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 import kotlinx.android.parcel.Parcelize
@@ -11,35 +10,44 @@ import kotlinx.android.parcel.Parcelize
 data class Episode(
 
     @field:Json(name = "id")
-    val id : Int,
+    val id: Int,
 
     @field:Json(name = "name")
-    val name : String,
+    val name: String,
 
     @field:Json(name = "season")
-    val season : Int,
+    val season: Int,
 
     @field:Json(name = "number")
-    val number : Int,
+    val number: Int,
 
     @field:Json(name = "summary")
-    val summary : String?,
+    val summary: String?,
 
     @SerializedName("image")
     @field:Json(name = "image")
-    val poster : PosterImage? = null,
+    val poster: PosterImage? = null,
 
-) : Parcelable {
+    ) : Parcelable {
 
     override fun toString() = nameWithSeason
 
     val formattedSeasonAndEpisode get() = "Season $season, Episode $number"
 
-    val formattedSummary get() = summary?.removeOutsideParagraph() ?: "(Summary not found)"
+    val formattedSummary
+        get() =
+            summary?.let {
+                when {
+                    it.isEmpty() -> "(Summary not found)"
+                    else -> it.removeOutsideParagraph()
+                }
+            } ?: "(Summary not found)"
 
-    val nameWithSeason get() : String {
-        val season = if(season < 10) "S0$season" else "S$season"
-        val episode= if(number < 10) "E0$number" else "E$number"
-        return "[$season$episode] $name"
-    }
+
+    val nameWithSeason
+        get() : String {
+            val season = if (season < 10) "S0$season" else "S$season"
+            val episode = if (number < 10) "E0$number" else "E$number"
+            return "[$season$episode] $name"
+        }
 }

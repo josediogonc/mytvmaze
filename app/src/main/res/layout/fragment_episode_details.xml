@@ -55,20 +55,21 @@
                 <ImageView
                     android:id="@+id/iv_poster"
                     android:layout_width="match_parent"
-                    android:layout_height="450dp"
+                    android:layout_height="270dp"
                     android:layout_gravity="center"
                     android:contentDescription="Episode poster"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/placeholder_movie_poster" />
+                    />
 
                 <TextView
                     android:id="@+id/tv_show_title"
                     style="@style/TitleStyle.H1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/default_spacing"
                     android:layout_marginStart="@dimen/double_spacing"
                     android:layout_marginEnd="@dimen/double_spacing"
+                    android:layout_marginTop="@dimen/double_spacing"
+                    android:layout_marginBottom="@dimen/small_spacing"
                     android:text="@{episodeData.name}"
                     tools:text="Mad Max: Fury Road" />
 
@@ -79,6 +80,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/double_spacing"
                     android:layout_marginEnd="@dimen/double_spacing"
+                    android:layout_marginBottom="@dimen/small_spacing"
                     android:text="@{episodeData.formattedSeasonAndEpisode}"
                     tools:text="Season 1, Episode 1" />
 

@@ -45,7 +45,7 @@
                         android:layout_height="30dp"
                         android:layout_alignParentBottom="true"
                         android:layout_marginBottom="20dp"
-                        android:background="@color/color_accent"
+                        android:background="@color/color_secundary"
                         android:alpha="0.7"/>
 
                     <LinearLayout
@@ -101,11 +101,10 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:alpha="0.9"
-                                android:background="@color/color_primary_dark"
+                                android:background="@color/color_secundary"
                                 style="@style/TitleStyle"
                                 android:id="@+id/tv_title"
-                                android:padding="10dp"
+                                android:padding="8dp"
                                 android:textColor="@color/white"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -113,8 +112,8 @@
 
                             <TextView
                                 style="@style/label_style"
-                                android:layout_marginTop="5dp"
-                                android:layout_marginBottom="5dp"
+                                android:layout_marginTop="@dimen/default_spacing"
+                                android:layout_marginBottom="@dimen/default_spacing"
                                 android:id="@+id/tv_genres"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

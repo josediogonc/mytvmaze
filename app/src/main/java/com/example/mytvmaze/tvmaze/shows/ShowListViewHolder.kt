@@ -73,6 +73,6 @@ class ShowListViewHolder(
 
     private fun Show.initPoster() =
         this.poster?.medium?.let {
-            ImageFactory.load(it, binding.bannerImg)
+            ImageFactory.load(it, R.drawable.placeholder_movie_poster, binding.bannerImg)
         }
 }

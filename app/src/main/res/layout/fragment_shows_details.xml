@@ -59,10 +59,13 @@
                     android:layout_marginTop="20dp"
                     android:contentDescription="ShTV S"
                     android:scaleType="centerCrop"
+                    android:src="@drawable/placeholder_movie_poster"
                     tools:targetApi="m" />
 
                 <TextView
                     style="@style/TitleStyle.H1"
+                    android:layout_marginStart="@dimen/default_spacing"
+                    android:layout_marginEnd="@dimen/default_spacing"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_spacing"
@@ -71,6 +74,8 @@
 
                 <TextView
                     android:id="@+id/tv_show_genres"
+                    android:layout_marginStart="@dimen/default_spacing"
+                    android:layout_marginEnd="@dimen/default_spacing"
                     style="@style/label_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -192,11 +197,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/double_spacing"
-                    android:layout_marginTop="@dimen/double_spacing"
+                    android:layout_marginTop="25dp"
                     android:layout_marginEnd="@dimen/double_spacing"
                     android:text="@string/seasons_and_episodes" />
 
                 <LinearLayout
+                    android:layout_marginTop="@dimen/default_spacing"
                     android:layout_marginStart="@dimen/double_spacing"
                     android:layout_marginEnd="@dimen/double_spacing"
                     android:layout_marginBottom="@dimen/double_spacing"

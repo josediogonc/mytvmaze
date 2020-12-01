@@ -16,9 +16,6 @@ interface ApiService {
     @GET("shows")
     suspend fun getShowsByPage(@Query("page") page: Int): Response<List<Show>>
 
-    @GET("shows/{id}")
-    suspend fun getShowById(@Path("id") id: Int): Response<Show>
-
     @GET("shows/{id}/episodes")
     suspend fun getEpisodes(@Path("id") showId: Int): Response<List<Episode>>
 
