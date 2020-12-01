@@ -13,20 +13,42 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
-        tools:context=".MainActivity">
+        tools:context="searchview.toolbar.com.searchviewtoolbar.MainActivity">
 
         <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/AppTheme.AppBarOverlay">
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+            <RelativeLayout
+                android:animateLayoutChanges="true"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="@color/blue_chill"
-                app:title="My TV Maze"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                android:layout_gravity="center_horizontal"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <ImageView
+                    android:id="@+id/iv_search_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_search" />
+
+                <TextView
+                    android:layout_marginStart="@dimen/double_spacing"
+                    android:textColor="@color/white"
+                    android:text="@{viewModel.toolbarTitle}"
+                    android:fontFamily="@font/open_sans"
+                    android:gravity="center_vertical"
+                    android:textSize="18sp"
+                    android:id="@+id/tv_toolbar_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </RelativeLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -62,9 +84,6 @@
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 

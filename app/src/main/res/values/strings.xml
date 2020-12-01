@@ -15,7 +15,8 @@
     <string name="rating">Rating</string>
     <string name="schedule">Schedule</string>
     <string name="date_released">Premiered at</string>
-    <string name="summary">Summary</string>
+    <string name="show_summary">Summary</string>
     <string name="seasons_and_episodes">Seasons and Episodes</string>
     <string name="network">Network</string>
+    <string name="episode_summary">Episode summary</string>
 </resources>

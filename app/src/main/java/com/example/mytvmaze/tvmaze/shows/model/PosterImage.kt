@@ -9,10 +9,10 @@ import java.io.Serializable
 data class PosterImage(
 
     @field:Json(name = "medium")
-    val medium : String,
+    val medium : String?,
 
     @field:Json(name = "original")
-    val original : String
+    val original : String?
 
 ) : Parcelable, Serializable {
 

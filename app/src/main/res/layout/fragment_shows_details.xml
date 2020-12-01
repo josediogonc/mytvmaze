@@ -37,12 +37,10 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/app_bar">
-
 
             <LinearLayout
                 android:id="@+id/main_layout"
@@ -64,7 +62,6 @@
                     android:src="@drawable/placeholder_movie_poster" />
 
                 <TextView
-                    android:id="@+id/tv_show_title"
                     style="@style/show_list_title_huge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -132,13 +129,29 @@
                         tools:text="HBO" />
 
                     <TextView
+                        android:id="@+id/rating_value"
                         style="@style/properties_style"
                         android:layout_width="wrap_content"
                         android:layout_below="@id/label_date_released"
                         android:layout_toEndOf="@id/label_rating"
-                        android:minWidth="100dp"
                         android:text="@{showData.rating.toString()}"
                         tools:text="3.5" />
+
+                    <RatingBar
+                        android:layout_below="@id/label_date_released"
+                        android:layout_toRightOf="@id/rating_value"
+                        android:theme="@style/RatingBar"
+                        android:id="@+id/ratingBar"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:max="5"
+                        android:numStars="5"
+                        android:rating="0"
+                        android:scaleX="1.2"
+                        android:scaleY="1.2"
+                        android:stepSize="0.1" />
 
                     <TextView
                         style="@style/properties_style"
@@ -146,7 +159,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/label_network"
                         android:layout_toEndOf="@id/label_shedule"
-                        android:maxWidth="180dp"
+                        android:maxWidth="160dp"
                         android:text="@{showData.schedule.toString()}"
                         tools:text="00:00 Sunday" />
 
@@ -157,19 +170,20 @@
                     style="@style/label_style_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/default_spacing"
+                    android:layout_marginBottom="@dimen/default_spacing"
+                    android:layout_marginStart="@dimen/double_spacing"
                     android:layout_marginTop="@dimen/double_spacing"
-                    android:layout_marginEnd="@dimen/default_spacing"
-                    android:text="@string/summary" />
+                    android:layout_marginEnd="@dimen/double_spacing"
+                    android:text="@string/show_summary" />
 
                 <TextView
+                    style="@style/long_text"
                     android:id="@+id/movie_summary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/default_spacing"
-                    android:layout_marginEnd="@dimen/default_spacing"
+                    android:layout_marginStart="@dimen/double_spacing"
+                    android:layout_marginEnd="@dimen/double_spacing"
                     android:text="@{showData.formattedSummary}"
-                    android:textSize="16sp"
                     tools:text="@string/lorem_ipsum" />
 
                 <TextView
@@ -177,14 +191,14 @@
                     style="@style/label_style_detail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/default_spacing"
+                    android:layout_marginStart="@dimen/double_spacing"
                     android:layout_marginTop="@dimen/double_spacing"
-                    android:layout_marginEnd="@dimen/default_spacing"
+                    android:layout_marginEnd="@dimen/double_spacing"
                     android:text="@string/seasons_and_episodes" />
 
                 <LinearLayout
-                    android:layout_marginStart="@dimen/default_spacing"
-                    android:layout_marginEnd="@dimen/default_spacing"
+                    android:layout_marginStart="@dimen/double_spacing"
+                    android:layout_marginEnd="@dimen/double_spacing"
                     android:layout_marginBottom="@dimen/double_spacing"
                     android:orientation="vertical"
                     android:id="@+id/seasons_episodes_layout"

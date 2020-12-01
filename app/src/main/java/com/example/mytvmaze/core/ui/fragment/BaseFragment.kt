@@ -7,7 +7,7 @@ import com.example.mytvmaze.R
 import com.example.mytvmaze.core.extensions.supportFragmentManager
 import com.example.mytvmaze.core.ui.dialog.DialogFactory
 
-open class BaseFragment : Fragment() {
+abstract class BaseFragment : Fragment() {
 
     open fun setupObservers() {
     }
@@ -15,7 +15,10 @@ open class BaseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupObservers()
+        setupToolbar()
     }
+
+    abstract fun setupToolbar()
 
     protected fun showDefaultErrorDialog() {
         DialogFactory.CustomDialog(

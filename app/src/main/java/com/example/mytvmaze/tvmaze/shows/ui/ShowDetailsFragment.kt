@@ -41,16 +41,23 @@ class ShowDetailsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getEpisodes(args.show.id)
-        setupToolbar()
         setupPoster()
+        setupRatingBar()
+    }
 
+    private fun setupRatingBar() {
+        args.show.rating.average?.let {
+            binding.ratingBar.rating = it /2
+        } ?: run {
+            binding.ratingBar.visibility = View.GONE
+        }
     }
 
     private fun setupPoster() {
-        Picasso.get().load(args.show.poster.original).into(binding.ivPoster)
+        Picasso.get().load(args.show.poster?.original).into(binding.ivPoster)
     }
 
-    private fun setupToolbar() {
+    override fun setupToolbar() {
         binding.toolbar.setNavigationIcon(R.drawable.white_back_arrow)
         binding.toolbar.setNavigationOnClickListener { findNavController().popBackStack() }
     }
@@ -70,6 +77,7 @@ class ShowDetailsFragment : BaseFragment() {
     }
 
     private fun initSeasonsAndEpisodesView(episodesMap: MutableMap<Int, List<Episode>>) {
+        binding.seasonsEpisodesLayout.removeAllViews()
         for((season, episodes) in episodesMap) {
             addSeasonTextView("Season $season")
             initEpisodesView(episodes)
@@ -83,7 +91,7 @@ class ShowDetailsFragment : BaseFragment() {
     }
     
     private fun navigateToEpisodeDetailsScreen(episode : Episode) {
-        val action = ShowDetailsFragmentDirections.actionShowDetailsFragmentToEpisodeDetails(episode)
+        val action = ShowDetailsFragmentDirections.actionShowDetailsFragmentToEpisodeDetails(episode, args.show.name)
         findNavController().navigate(action)
     }
 
@@ -112,6 +120,5 @@ class ShowDetailsFragment : BaseFragment() {
         }
         binding.seasonsEpisodesLayout.addView(tvSeason, layoutParams)
     }
-
 
 }

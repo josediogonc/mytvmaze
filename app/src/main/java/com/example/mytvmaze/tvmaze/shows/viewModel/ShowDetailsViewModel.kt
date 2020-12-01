@@ -12,10 +12,6 @@ class ShowDetailsViewModel(apiRepository: ApiRepository) : BaseViewModel(apiRepo
 
     val episodes = MutableLiveData<List<Episode>>()
 
-    fun getShowDetails(showId : Int) {
-        //TODO("Not yet implemented")
-    }
-
     fun getEpisodes(showId : Int) {
         viewModelScope.launch {
             loading(true)
@@ -38,10 +34,6 @@ class ShowDetailsViewModel(apiRepository: ApiRepository) : BaseViewModel(apiRepo
                 val episodesFromSeason = episodesList.filter { it.season == season }
                 episodesMap.put(season, episodesFromSeason)
             }
-
-
-
-
 
         }
 

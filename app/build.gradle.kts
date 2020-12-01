@@ -115,17 +115,15 @@ tasks {
 }
 
 dependencies {
+    api(config.Libs.PICASSO)
+    api(config.Libs.MATERIAL_DESIGN)
     implementation(config.Libs.BIOMETRIC)
 
-    implementation(config.Libs.ANDROID_IMAGE_CROPPER)
     implementation(config.Libs.PICASSO)
-    implementation(config.Libs.LOTTIE)
-    implementation(config.Libs.SHIMMER)
     implementation(config.Libs.SHAPE_OF_VIEW)
     implementation(config.Libs.ANDROID_SPIN_KIT)
     implementation(config.Libs.INSTALL_REFERRES)
     implementation(config.Libs.BCPROV)
-    implementation(config.Libs.VIEW_PAGER_DOT_INDICATOR)
     implementation(config.Libs.CHART_VIEW)
     implementation(config.Libs.SWIPE_REFRESH)
     implementation("org.jetbrains.kotlin:kotlin-stdlib:${rootProject.extra["kotlin_version"]}")

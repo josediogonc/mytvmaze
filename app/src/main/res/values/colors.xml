@@ -15,5 +15,7 @@
     <color name="blue_chill">#3C948B</color>
 
     <color name="color_primary_dark">@color/tiber</color>
+    <color name="color_primary">@color/blue_chill</color>
+    <color name="color_accent">@color/dim_gray</color>
 
 </resources>

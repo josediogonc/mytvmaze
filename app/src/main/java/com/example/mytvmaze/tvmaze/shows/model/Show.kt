@@ -25,7 +25,7 @@ data class Show(
     @TypeConverters(PosterImageConverter::class)
     @SerializedName("image")
     @field:Json(name = "image")
-    val poster : PosterImage,
+    val poster : PosterImage?,
 
     @TypeConverters(GenresConverter::class)
     @field:Json(name = "genres")
@@ -49,7 +49,7 @@ data class Show(
     val schedule : Schedule,
 
     @field:Json(name = "summary")
-    val summary : String,
+    val summary : String?,
 
     @TypeConverters(NetworkConverter::class)
     @field:Json(name = "network")
@@ -63,5 +63,7 @@ data class Show(
         "(Unknown genre)"
     }
 
-    val formattedSummary get() = summary.removePrefix("<p>").removeSuffix("</p>").toHTML()
+    val formattedSummary get() = summary?.let{
+        it.removePrefix("<p>").removeSuffix("</p>").toHTML()
+    } ?: "(Summary not found)"
 }

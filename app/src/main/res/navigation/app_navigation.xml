@@ -53,6 +53,11 @@
             app:nullable="false"
             app:argType="com.example.mytvmaze.tvmaze.shows.model.Episode" />
 
+        <argument
+            android:name="showName"
+            app:nullable="false"
+            app:argType="string" />
+
     </fragment>
 
 </navigation>
